@@ -6,11 +6,21 @@ import {imageUrlFor} from '../lib/image-url'
 import BlockContent from './block-content'
 import Container from './container'
 import RoleList from './role-list'
+import Photo from './photo'
 
 import styles from './project.module.css'
 
 function Project (props) {
-  const {_rawBody, title, categories, mainImage, members, publishedAt, relatedProjects} = props
+  const {
+    _rawBody,
+    title,
+    categories,
+    mainImage,
+    members,
+    photos,
+    publishedAt,
+    relatedProjects
+  } = props
   return (
     <article className={styles.root}>
       {props.mainImage && mainImage.asset && (
@@ -66,6 +76,9 @@ function Project (props) {
                 </ul>
               </div>
             )}
+            {photos &&
+              photos.length > 0 &&
+              photos.map(photo => <Photo key={photo.asset._id} photo={photo} />)}
           </aside>
         </div>
       </Container>
