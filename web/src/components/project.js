@@ -76,10 +76,10 @@ function Project (props) {
                 </ul>
               </div>
             )}
-            {photos &&
-              photos.length > 0 &&
-              photos.map(photo => <Photo key={photo.asset._id} photo={photo} />)}
           </aside>
+          {photos &&
+            photos.length > 0 &&
+            photos.map(photo => <Photo key={photo.asset._id} photo={photo} />)}
         </div>
       </Container>
     </article>
