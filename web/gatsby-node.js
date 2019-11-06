@@ -5,9 +5,9 @@ const {isFuture} = require('date-fns')
  * See: https://www.gatsbyjs.org/docs/node-apis/
  */
 
-async function createProjectPages (graphql, actions, reporter) {
+exports.createPages = ({graphql, actions, reporter}) => {
   const {createPage} = actions
-  const result = await graphql(`
+  return graphql(`
     {
       allSanityProject(filter: {slug: {current: {ne: null}}, publishedAt: {ne: null}}) {
         edges {
@@ -17,21 +17,34 @@ async function createProjectPages (graphql, actions, reporter) {
             slug {
               current
             }
+            categories {
+              id
+              title
+              slug {
+                current
+              }
+            }
           }
         }
       }
     }
-  `)
+  `).then(res => {
+    if (res.errors) {
+      return Promise.reject(res.errors)
+    }
+    const projects = (res.data.allSanityProject || {}).edges || []
 
-  if (result.errors) throw result.errors
+    createProjectPages({projects, createPage, reporter})
+    createCategoryPages({projects, createPage, reporter})
+  })
+}
 
-  const projectEdges = (result.data.allSanityProject || {}).edges || []
-
-  projectEdges
-    .filter(edge => !isFuture(edge.node.publishedAt))
-    .forEach(edge => {
-      const id = edge.node.id
-      const slug = edge.node.slug.current
+const createProjectPages = ({projects, createPage, reporter}) => {
+  projects
+    .filter(project => !isFuture(project.node.publishedAt))
+    .forEach(project => {
+      const id = project.node.id
+      const slug = project.node.slug.current
       const path = `/project/${slug}/`
 
       reporter.info(`Creating project page: ${path}`)
@@ -44,6 +57,25 @@ async function createProjectPages (graphql, actions, reporter) {
     })
 }
 
-exports.createPages = async ({graphql, actions, reporter}) => {
-  await createProjectPages(graphql, actions, reporter)
+const createCategoryPages = ({projects, createPage, reporter}) => {
+  const allCategories = new Set()
+
+  projects.forEach(({node: {categories}}) => {
+    if (!Array.isArray(categories)) return
+    categories.forEach(category => allCategories.add(category))
+  })
+
+  allCategories.forEach(category => {
+    const id = category.id
+    const slug = category.slug.current
+    const path = `/category/${slug}`
+
+    reporter.info(`Creating category page: ${path}`)
+
+    createPage({
+      path,
+      component: require.resolve('./src/templates/category.js'),
+      context: {category, id}
+    })
+  })
 }
