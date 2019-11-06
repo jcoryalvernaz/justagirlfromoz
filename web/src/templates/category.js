@@ -43,6 +43,17 @@ export const query = graphql`
             }
             asset {
               _id
+              metadata {
+                dimensions {
+                  height
+                }
+                palette {
+                  dominant {
+                    foreground
+                    background
+                  }
+                }
+              }
             }
             alt
           }
