@@ -51,7 +51,6 @@ export const query = graphql`
                 }
                 palette {
                   dominant {
-                    foreground
                     background
                   }
                 }

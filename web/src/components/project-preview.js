@@ -10,12 +10,11 @@ import styles from './project-preview.module.css'
 import {responsiveTitle3} from './typography.module.css'
 
 const MainImage = styled.img`
-  grid-row-end: ${`span ${props => props.count}`};
   box-shadow: ${props => props.shadowArray.join(`, `)};
   position: relative;
   :focus {
-    box-shadow: ${`${props => props.shadowArray.join(`, `)}, rgba(${props =>
-    props.overlay}) 0px 0px 0px 10px`};
+    outline: none;
+    box-shadow: ${props => props.shadowArray.join(`, `)}, ${props => props.overlay} 0px 0px 0px 10px;
   }
 `
 
@@ -24,15 +23,11 @@ function ProjectPreview (props) {
   const overlay = hexToRgba(props.mainImage.asset.metadata.palette.dominant.background, 0.5)
   const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
   const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
-
-  const h = props.mainImage.asset.metadata.dimensions.height
-  const count = Math.floor(h / 50)
   return (
     <Link className={styles.root} to={`/project/${props.slug.current}`}>
       <div className={styles.leadMediaThumb}>
         {props.mainImage && props.mainImage.asset && (
           <MainImage
-            count={count}
             shadowArray={shadowArray}
             overlay={overlay}
             src={imageUrlFor(buildImageObj(props.mainImage))
