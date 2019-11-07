@@ -12,6 +12,7 @@ import {responsiveTitle3} from './typography.module.css'
 const MainImage = styled.img`
   box-shadow: ${props => props.shadowArray.join(`, `)};
   position: relative;
+  object-fit: cover;
   :focus {
     outline: none;
     box-shadow: ${props => props.shadowArray.join(`, `)}, ${props => props.overlay} 0px 0px 0px 10px;
@@ -30,10 +31,7 @@ function ProjectPreview (props) {
           <MainImage
             shadowArray={shadowArray}
             overlay={overlay}
-            src={imageUrlFor(buildImageObj(props.mainImage))
-              .width(600)
-              .height(Math.floor((9 / 16) * 600))
-              .url()}
+            src={imageUrlFor(buildImageObj(props.mainImage)).url()}
             alt={props.mainImage.alt}
           />
         )}
