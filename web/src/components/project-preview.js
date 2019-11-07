@@ -20,8 +20,8 @@ const MainImage = styled.img`
 `
 
 function ProjectPreview (props) {
-  const shadow = hexToRgba(props.mainImage.asset.metadata.palette.dominant.background, 0.15)
-  const overlay = hexToRgba(props.mainImage.asset.metadata.palette.dominant.background, 0.5)
+  const shadow = hexToRgba(props.mainImage.asset.metadata.palette.vibrant.background, 0.15)
+  const overlay = hexToRgba(props.mainImage.asset.metadata.palette.vibrant.background, 0.5)
   const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
   const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (

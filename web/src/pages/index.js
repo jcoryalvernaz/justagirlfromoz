@@ -53,6 +53,9 @@ export const query = graphql`
                   dominant {
                     background
                   }
+                  vibrant {
+                    background
+                  }
                 }
               }
             }

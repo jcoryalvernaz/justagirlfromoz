@@ -14,7 +14,7 @@ const Photo = ({photo}) => {
     return null
   }
 
-  const shadow = hexToRgba(photo.asset.metadata.palette.dominant.background, 0.15)
+  const shadow = hexToRgba(photo.asset.metadata.palette.vibrant.background, 0.15)
   const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
   const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (
