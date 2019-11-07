@@ -1,15 +1,21 @@
-@import './custom-properties.css';
+@import "./custom-properties.css";
 
 html {
+  box-sizing: border-box;
   font-family: var(--font-family-sans);
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
 }
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
 
 body {
   -webkit-font-smoothing: antialiased;
-  background: var(--color-white);
-  color: var(--color-black);
+  background: var(--color-black);
+  color: var(--color-white);
   margin: 0;
 }
 
@@ -18,4 +24,12 @@ body,
 body > div,
 body > div > div {
   height: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: var(--color-accent);
 }

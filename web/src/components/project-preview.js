@@ -38,7 +38,8 @@ function ProjectPreview (props) {
           />
         )}
       </div>
-      {/* <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
+      {/* //TODO use rawExcerpt in SEO component for social
+      <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
       {props._rawExcerpt && (
         <div className={styles.excerpt}>
           <BlockText blocks={props._rawExcerpt} />

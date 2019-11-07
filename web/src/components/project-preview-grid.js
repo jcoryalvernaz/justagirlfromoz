@@ -11,7 +11,14 @@ function ProjectPreviewGrid (props) {
       <ul className={styles.grid}>
         {props.nodes &&
           props.nodes.map(node => (
-            <li key={node.id}>
+            <li
+              style={{
+                gridRowEnd: `span ${Math.floor(
+                  node.mainImage.asset.metadata.dimensions.height / 1000
+                )}`
+              }}
+              key={node.id}
+            >
               <ProjectPreview {...node} />
             </li>
           ))}
