@@ -1,5 +1,6 @@
 import {Link} from 'gatsby'
 import React from 'react'
+import Img from 'gatsby-image'
 import hexToRgba from 'hex-to-rgba'
 import styled from 'styled-components'
 import {buildImageObj} from '../lib/helpers'
@@ -67,11 +68,21 @@ function ProjectPreview (props) {
             <OverlayStyles overlay={overlay} data-name='image-overlay'>
               <h2>{props.title}</h2>
             </OverlayStyles>
-            <MainImage
+            {/* <MainImage
               shadowArray={shadowArray}
               overlay={overlay}
               src={imageUrlFor(buildImageObj(props.mainImage)).url()}
               alt={props.mainImage.alt}
+            /> */}
+            <Img
+              style={{
+                boxShadow: shadowArray.join(`, `),
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+              }}
+              fluid={props.mainImage.asset.fluid}
             />
           </>
         )}
