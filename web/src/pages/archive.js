@@ -22,6 +22,9 @@ export const query = graphql`
           mainImage {
             asset {
               _id
+              fluid(maxWidth: 800) {
+                ...GatsbySanityImageFluid
+              }
               metadata {
                 dimensions {
                   height
