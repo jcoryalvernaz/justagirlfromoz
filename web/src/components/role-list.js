@@ -1,19 +1,58 @@
 import React from 'react'
+import styled from 'styled-components'
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 import {ucfirst} from '../lib/string-utils'
 
-import styles from './role-list.module.css'
+const RoleListStyles = styled.div`
+  margin: 2rem 0 3rem;
+  border-top: 1px solid var(--color-very-light-gray);
+  .headline {
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0.5rem 0 0;
+  }
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .listItem {
+    font-size: var(--font-small-size);
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    > div:last-child {
+      flex: 1;
+      margin-left: 0.75rem;
+    }
+  }
+  .avatar {
+    position: relative;
+    width: 3em;
+    height: 3em;
+    background: #eee;
+    border-radius: 50%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+      object-fit: cover;
+    }
+  }
+`
 
 function RoleList ({items, title}) {
   return (
-    <div className={styles.root}>
-      <h2 className={styles.headline}>{title}</h2>
-      <ul className={styles.list}>
+    <RoleListStyles>
+      <h2 className='headline'>{title}</h2>
+      <ul className='list'>
         {items.map(item => (
-          <li key={item._key} className={styles.listItem}>
+          <li key={item._key} className='listItem'>
             <div>
-              <div className={styles.avatar}>
+              <div className='avatar'>
                 {item.person && item.person.image && item.person.image.asset && (
                   <img
                     src={imageUrlFor(buildImageObj(item.person.image))
@@ -48,7 +87,7 @@ function RoleList ({items, title}) {
           </li>
         ))}
       </ul>
-    </div>
+    </RoleListStyles>
   )
 }
 
