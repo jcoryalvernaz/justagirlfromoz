@@ -5,7 +5,7 @@ import {Link} from 'gatsby'
 import {buildImageObj} from '../lib/helpers'
 import {imageUrlFor} from '../lib/image-url'
 import BlockContent from './block-content'
-import Container from './container'
+import ProjectContainer from './project-container'
 import RoleList from './role-list'
 import Photo from './photo'
 
@@ -126,7 +126,7 @@ function Project (props) {
           />
         </div>
       )}
-      <Container>
+      <ProjectContainer>
         <div className='grid'>
           <div className='mainContent'>
             <h1 className='title'>{title}</h1>
@@ -178,7 +178,7 @@ function Project (props) {
             photos.length > 0 &&
             photos.map(photo => <Photo key={photo.asset._id} photo={photo} />)}
         </div>
-      </Container>
+      </ProjectContainer>
     </ProjectStyles>
   )
 }

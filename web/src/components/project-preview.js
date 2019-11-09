@@ -42,7 +42,9 @@ const OverlayStyles = styled.div`
 `
 
 function ProjectPreview (props) {
-  const color = props.mainImage.asset.metadata.palette.vibrant !== null ? props.mainImage.asset.metadata.palette.vibrant.background : props.mainImage.asset.metadata.palette.dominant.background
+  const color = props.mainImage.asset.metadata.palette.vibrant !== null
+    ? props.mainImage.asset.metadata.palette.vibrant.background
+    : props.mainImage.asset.metadata.palette.dominant.background
   console.log(color)
   const shadow = hexToRgba(color, 0.15)
   const overlay = hexToRgba(color, 0.9)
