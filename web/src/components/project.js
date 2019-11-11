@@ -176,7 +176,7 @@ function Project (props) {
           </aside>
           {photos &&
             photos.length > 0 &&
-            photos.map(photo => <Photo key={photo.asset._id} photo={photo} />)}
+            photos.map((photo, i) => <Photo key={photo.asset._id} photo={photo} index={i} />)}
         </div>
       </ProjectContainer>
     </ProjectStyles>
