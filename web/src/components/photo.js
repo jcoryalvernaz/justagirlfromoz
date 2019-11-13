@@ -3,22 +3,25 @@ import Img from "gatsby-image";
 import hexToRgba from "hex-to-rgba";
 import styled from "styled-components";
 import { useInView } from "react-intersection-observer";
-import { useSpring, animated, config } from "react-spring";
 
-const PhotoStyles = styled(animated.div)`
+const PhotoStyles = styled.div`
   display: grid;
   grid-column: 1 / -1;
   margin-top: ${props => props.margin};
   max-width: 500px;
   background-color: var(--color-white);
-  padding: 1vmin 1vmin 14vmin 1vmin;
+  padding: 1vmin 1vmin 8vmin 1vmin;
   transform: rotate(${props => props.offset * 3}deg)
-    translate3d(${props => props.offset * -100}%, 300px, 0px) scale(1.5);
-  border: 1px solid var(--color-gray);
+    translate3d(${props => props.offset * -100}%, 300px, 0) scale(1.5);
   transition: all 1s ease-in-out;
   justify-self: center;
   width: 100%;
   box-shadow: ${props => props.offset * 30}vmin -10vmin 5px rgba(0, 0, 0, 0.7);
+  .handwriting {
+    color: var(--color-black);
+    justify-self: end;
+    padding-top: 4vmin;
+  }
 `;
 
 const Photo = ({ photo, index }) => {
@@ -29,7 +32,6 @@ const Photo = ({ photo, index }) => {
     triggerOnce: false,
     threshold: 0
   });
-  const props = useSpring({ opacity: 1, from: { opacity: 0 } });
   const offset = index % 2 === 0 ? 1 : -1;
   const color =
     !photo.asset.metadata.palette.vibrant === null
@@ -44,7 +46,16 @@ const Photo = ({ photo, index }) => {
       offset={offset}
       style={inView ? { transform: `rotate(${offset * 3}deg)`, boxShadow: "none" } : {}}
     >
-      <Img style={props} fluid={photo.asset.fluid} alt={photo.alt} />
+      <Img
+        style={{
+          outline: "1px solid transparent",
+          WebkitBackfaceVisibility: "hidden",
+          WebkitPerspective: 1000
+        }}
+        fluid={photo.asset.fluid}
+        alt={photo.alt}
+      />
+      <span className="handwriting">{photo.caption}</span>
     </PhotoStyles>
   );
 };

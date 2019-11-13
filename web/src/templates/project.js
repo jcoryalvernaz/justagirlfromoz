@@ -91,6 +91,7 @@ export const query = graphql`
           }
         }
         alt
+        caption
       }
       title
       slug {
