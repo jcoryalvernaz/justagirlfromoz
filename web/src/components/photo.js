@@ -12,7 +12,7 @@ const PhotoStyles = styled.div`
   background-color: var(--color-white);
   padding: 1vmin 1vmin 8vmin 1vmin;
   transform: rotate(${props => props.offset * 3}deg)
-    translate3d(${props => props.offset * -100}%, 300px, 0) scale(1.5);
+    translate3d(${props => props.offset * -100}%, 300px, 0) scale(1.3);
   transition: all 1s ease-in-out;
   justify-self: center;
   width: 100%;
@@ -44,7 +44,11 @@ const Photo = ({ photo, index }) => {
     <PhotoStyles
       ref={ref}
       offset={offset}
-      style={inView ? { transform: `rotate(${offset * 3}deg)`, boxShadow: "none" } : {}}
+      style={
+        inView
+          ? { transform: `rotate(${offset * 3}deg)`, boxShadow: `0 0 5px rgba(0, 0, 0, 0.7)` }
+          : {}
+      }
     >
       <Img
         style={{
