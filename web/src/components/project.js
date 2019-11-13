@@ -1,13 +1,14 @@
-import {format, distanceInWords, differenceInDays} from 'date-fns'
-import React from 'react'
-import styled from 'styled-components'
-import {Link} from 'gatsby'
-import {buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
-import BlockContent from './block-content'
-import ProjectContainer from './project-container'
-import RoleList from './role-list'
-import Photo from './photo'
+import { format, distanceInWords, differenceInDays } from "date-fns";
+import React from "react";
+import styled from "styled-components";
+import { Link } from "gatsby";
+import { buildImageObj } from "../lib/helpers";
+import { imageUrlFor } from "../lib/image-url";
+import BlockContent from "./block-content";
+import Container from "./container";
+import PhotosContainer from "./photos-container";
+import RoleList from "./role-list";
+import Photo from "./photo";
 
 const ProjectStyles = styled.article`
   .title {
@@ -99,9 +100,9 @@ const ProjectStyles = styled.article`
     line-height: inherit;
     margin: 0.5rem 0 0;
   }
-`
+`;
 
-function Project (props) {
+function Project(props) {
   const {
     _rawBody,
     title,
@@ -111,39 +112,39 @@ function Project (props) {
     photos,
     publishedAt,
     relatedProjects
-  } = props
+  } = props;
   return (
     <ProjectStyles>
       {props.mainImage && mainImage.asset && (
-        <div className='mainImage'>
+        <div className="mainImage">
           <img
             src={imageUrlFor(buildImageObj(mainImage))
               .width(1200)
               .height(Math.floor((9 / 16) * 1200))
-              .fit('crop')
+              .fit("crop")
               .url()}
             alt={mainImage.alt}
           />
         </div>
       )}
-      <ProjectContainer>
-        <div className='grid'>
-          <div className='mainContent'>
-            <h1 className='title'>{title}</h1>
+      <Container>
+        <div className="grid">
+          <div className="mainContent">
+            <h1 className="title">{title}</h1>
             {_rawBody && <BlockContent blocks={_rawBody || []} />}
           </div>
-          <aside className='metaContent'>
+          <aside className="metaContent">
             {publishedAt && (
-              <div className='publishedAt'>
+              <div className="publishedAt">
                 {differenceInDays(new Date(publishedAt), new Date()) > 3
                   ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), 'MMMM Do YYYY')}
+                  : format(new Date(publishedAt), "MMMM Do YYYY")}
               </div>
             )}
-            {members && members.length > 0 && <RoleList items={members} title='Project members' />}
+            {members && members.length > 0 && <RoleList items={members} title="Project members" />}
             {categories && categories.length > 0 && (
-              <div className='categories'>
-                <h3 className='categoriesHeadline'>Categories</h3>
+              <div className="categories">
+                <h3 className="categoriesHeadline">Categories</h3>
                 <ul>
                   {categories.map(category => (
                     <li key={category._id}>
@@ -158,8 +159,8 @@ function Project (props) {
               </div>
             )}
             {relatedProjects && relatedProjects.length > 0 && (
-              <div className='relatedProjects'>
-                <h3 className='relatedProjectsHeadline'>Related projects</h3>
+              <div className="relatedProjects">
+                <h3 className="relatedProjectsHeadline">Related projects</h3>
                 <ul>
                   {relatedProjects.map(project => (
                     <li key={`related_${project._id}`}>
@@ -174,13 +175,15 @@ function Project (props) {
               </div>
             )}
           </aside>
-          {photos &&
-            photos.length > 0 &&
-            photos.map((photo, i) => <Photo key={photo.asset._id} photo={photo} index={i} />)}
         </div>
-      </ProjectContainer>
+      </Container>
+      <PhotosContainer>
+        {photos &&
+          photos.length > 0 &&
+          photos.map((photo, i) => <Photo key={photo.asset._id} photo={photo} index={i} />)}
+      </PhotosContainer>
     </ProjectStyles>
-  )
+  );
 }
 
-export default Project
+export default Project;
