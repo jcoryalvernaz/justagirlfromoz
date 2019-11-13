@@ -1,8 +1,8 @@
-import {Link} from 'gatsby'
-import React from 'react'
-import Img from 'gatsby-image'
-import hexToRgba from 'hex-to-rgba'
-import styled from 'styled-components'
+import { Link } from "gatsby";
+import React from "react";
+import Img from "gatsby-image";
+import hexToRgba from "hex-to-rgba";
+import styled from "styled-components";
 
 const PreviewStyles = styled.div`
   display: grid;
@@ -12,11 +12,11 @@ const PreviewStyles = styled.div`
   position: relative;
   :focus,
   :hover {
-    [data-name='image-overlay'] {
+    [data-name="image-overlay"] {
       opacity: 1;
     }
   }
-`
+`;
 
 const OverlayStyles = styled.div`
   z-index: 20;
@@ -39,23 +39,23 @@ const OverlayStyles = styled.div`
   h2 {
     text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 12px;
   }
-`
+`;
 
-function ProjectPreview (props) {
-  const color = props.mainImage.asset.metadata.palette.vibrant !== null
-    ? props.mainImage.asset.metadata.palette.vibrant.background
-    : props.mainImage.asset.metadata.palette.dominant.background
-  console.log(color)
-  const shadow = hexToRgba(color, 0.15)
-  const overlay = hexToRgba(color, 0.9)
-  const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
-  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
+function ProjectPreview(props) {
+  const color =
+    props.mainImage.asset.metadata.palette.vibrant !== null
+      ? props.mainImage.asset.metadata.palette.vibrant.background
+      : props.mainImage.asset.metadata.palette.dominant.background;
+  const shadow = hexToRgba(color, 0.15);
+  const overlay = hexToRgba(color, 0.9);
+  const px = [`64px`, `32px`, `16px`, `8px`, `4px`];
+  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`);
   return (
     <PreviewStyles>
       <Link to={`/project/${props.slug.current}`}>
         {props.mainImage && props.mainImage.asset && (
           <>
-            <OverlayStyles overlay={overlay} data-name='image-overlay'>
+            <OverlayStyles overlay={overlay} data-name="image-overlay">
               <h2>{props.title}</h2>
             </OverlayStyles>
             {/* <MainImage
@@ -67,10 +67,10 @@ function ProjectPreview (props) {
             <Img
               style={{
                 boxShadow: shadowArray.join(`, `),
-                position: 'absolute',
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover'
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                objectFit: "cover"
               }}
               fluid={props.mainImage.asset.fluid}
             />
@@ -86,7 +86,7 @@ function ProjectPreview (props) {
       )} */}
       </Link>
     </PreviewStyles>
-  )
+  );
 }
 
-export default ProjectPreview
+export default ProjectPreview;
