@@ -4,6 +4,8 @@ import hexToRgba from "hex-to-rgba"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
 
+import OverlayStyles from "../styles/OverlayStyles"
+
 const PhotoStyles = styled.div`
   display: grid;
   grid-column: 1 / -1;
@@ -22,14 +24,33 @@ const PhotoStyles = styled.div`
     justify-self: end;
     padding-top: 4vmin;
   }
+  .image-container {
+    display: grid;
+    .view {
+      outline: none;
+      cursor: pointer;
+      background: none;
+      border: 0;
+      width: 100%;
+      height: 100%;
+      color: var(--color-white);
+      padding: 1vmin;
+      text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 12px;
+    }
+    :hover {
+      [data-name="image-overlay"] {
+        opacity: 1;
+      }
+    }
+  }
 `
 
-const Photo = ({ photo, index }) => {
+const Photo = ({ photo, index, selectImage }) => {
   if (!photo.asset) {
     return null
   }
   const [ref, inView] = useInView({
-    triggerOnce: false,
+    triggerOnce: true,
     threshold: 0,
   })
   const offset = index % 2 === 0 ? 1 : -1
@@ -38,6 +59,7 @@ const Photo = ({ photo, index }) => {
       ? photo.asset.metadata.palette.vibrant.background
       : photo.asset.metadata.palette.dominant.background
   const shadow = hexToRgba(color, 0.15)
+  const overlay = hexToRgba(color, 0.9)
   const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
   const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (
@@ -50,15 +72,22 @@ const Photo = ({ photo, index }) => {
           : {}
       }
     >
-      <Img
-        style={{
-          outline: "1px solid transparent",
-          WebkitBackfaceVisibility: "hidden",
-          WebkitPerspective: 1000,
-        }}
-        fluid={photo.asset.fluid}
-        alt={photo.alt}
-      />
+      <div className="image-container">
+        <OverlayStyles overlay={overlay} data-name="image-overlay">
+          <button className="view" onClick={() => selectImage(photo.asset.fluid, photo.alt)}>
+            View
+          </button>
+        </OverlayStyles>
+        <Img
+          style={{
+            outline: "1px solid transparent",
+            WebkitBackfaceVisibility: "hidden",
+            WebkitPerspective: 1000,
+          }}
+          fluid={photo.asset.fluid}
+          alt={photo.alt}
+        />
+      </div>
       <span className="handwriting">{photo.caption}</span>
     </PhotoStyles>
   )

@@ -1,8 +1,10 @@
-import { Link } from "gatsby";
-import React from "react";
-import Img from "gatsby-image";
-import hexToRgba from "hex-to-rgba";
-import styled from "styled-components";
+import { Link } from "gatsby"
+import React from "react"
+import Img from "gatsby-image"
+import hexToRgba from "hex-to-rgba"
+import styled from "styled-components"
+
+import OverlayStyles from "../styles/OverlayStyles"
 
 const PreviewStyles = styled.div`
   display: grid;
@@ -16,40 +18,17 @@ const PreviewStyles = styled.div`
       opacity: 1;
     }
   }
-`;
-
-const OverlayStyles = styled.div`
-  z-index: 20;
-  display: grid;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  opacity: 0;
-  transition: all 0.3s ease-in-out;
-  color: var(--color-white);
-  background-color: ${props => props.overlay};
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  padding: 1rem;
-  h2 {
-    text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 12px;
-  }
-`;
+`
 
 function ProjectPreview(props) {
   const color =
     props.mainImage.asset.metadata.palette.vibrant !== null
       ? props.mainImage.asset.metadata.palette.vibrant.background
-      : props.mainImage.asset.metadata.palette.dominant.background;
-  const shadow = hexToRgba(color, 0.15);
-  const overlay = hexToRgba(color, 0.9);
-  const px = [`64px`, `32px`, `16px`, `8px`, `4px`];
-  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`);
+      : props.mainImage.asset.metadata.palette.dominant.background
+  const shadow = hexToRgba(color, 0.15)
+  const overlay = hexToRgba(color, 0.9)
+  const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
+  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (
     <PreviewStyles>
       <Link to={`/project/${props.slug.current}`}>
@@ -70,7 +49,7 @@ function ProjectPreview(props) {
                 position: "absolute",
                 width: "100%",
                 height: "100%",
-                objectFit: "cover"
+                objectFit: "cover",
               }}
               fluid={props.mainImage.asset.fluid}
             />
@@ -86,7 +65,7 @@ function ProjectPreview(props) {
       )} */}
       </Link>
     </PreviewStyles>
-  );
+  )
 }
 
-export default ProjectPreview;
+export default ProjectPreview

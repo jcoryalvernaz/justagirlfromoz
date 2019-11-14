@@ -1,5 +1,6 @@
 import { format, distanceInWords, differenceInDays } from "date-fns"
-import React from "react"
+import React, { useState } from "react"
+import Img from "gatsby-image"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { buildImageObj } from "../lib/helpers"
@@ -12,6 +13,31 @@ import Photo from "./photo"
 
 const ProjectStyles = styled.article`
   overflow: hidden;
+  .overlay {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    display: ${props => (props.isVisible ? "grid" : "none")};
+    align-items: center;
+    justify-items: center;
+    padding: 1.5rem;
+  }
+  .overlay-inner {
+    background-color: var(--color-white);
+    width: 100%;
+    max-width: 800px;
+    padding: 1vmin;
+  }
+  .close {
+    cursor: pointer;
+    background: none;
+    color: var(--color-black);
+    border: 0;
+  }
   .title {
     font-weight: 900;
     font-size: var(--font-title3-size);
@@ -103,7 +129,17 @@ const ProjectStyles = styled.article`
   }
 `
 
-function Project(props) {
+const Project = props => {
+  const [state, setState] = useState({
+    overlayImageFluid: {},
+    overlayImageAlt: "",
+    isVisible: false,
+  })
+
+  const selectImage = (fluid, alt) => {
+    setState({ overlayImageFluid: fluid, overlayImageAlt: alt, isVisible: true })
+  }
+
   const {
     _rawBody,
     title,
@@ -115,7 +151,17 @@ function Project(props) {
     relatedProjects,
   } = props
   return (
-    <ProjectStyles>
+    <ProjectStyles isVisible={state.isVisible}>
+      {state.isVisible && (
+        <div className="overlay">
+          <div className="overlay-inner">
+            <button className="close" onClick={() => setState({ isVisible: false })}>
+              x Close
+            </button>
+            <Img fluid={state.overlayImageFluid} alt={state.overlayImageAlt} />
+          </div>
+        </div>
+      )}
       {props.mainImage && mainImage.asset && (
         <div className="mainImage">
           <img
@@ -181,7 +227,9 @@ function Project(props) {
       <PhotosContainer>
         {photos &&
           photos.length > 0 &&
-          photos.map((photo, i) => <Photo key={photo.asset._id} photo={photo} index={i} />)}
+          photos.map((photo, i) => (
+            <Photo key={photo.asset._id} photo={photo} index={i} selectImage={selectImage} />
+          ))}
       </PhotosContainer>
     </ProjectStyles>
   )
