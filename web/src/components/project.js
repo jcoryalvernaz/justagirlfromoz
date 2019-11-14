@@ -55,14 +55,13 @@ const ProjectStyles = styled.article`
   .mainImage {
     position: relative;
     background: #eee;
-    padding-bottom: calc(9 / 16 * 100%);
     img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      vertical-align: top;
+
       object-fit: cover;
     }
   }
@@ -164,14 +163,7 @@ const Project = props => {
       )}
       {props.mainImage && mainImage.asset && (
         <div className="mainImage">
-          <img
-            src={imageUrlFor(buildImageObj(mainImage))
-              .width(1200)
-              .height(Math.floor((9 / 16) * 1200))
-              .fit("crop")
-              .url()}
-            alt={mainImage.alt}
-          />
+          <Img fluid={mainImage.asset.fluid} alt={mainImage.alt} />
         </div>
       )}
       <Container>
