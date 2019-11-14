@@ -1,8 +1,8 @@
-import React from "react";
-import Img from "gatsby-image";
-import hexToRgba from "hex-to-rgba";
-import styled from "styled-components";
-import { useInView } from "react-intersection-observer";
+import React from "react"
+import Img from "gatsby-image"
+import hexToRgba from "hex-to-rgba"
+import styled from "styled-components"
+import { useInView } from "react-intersection-observer"
 
 const PhotoStyles = styled.div`
   display: grid;
@@ -12,8 +12,8 @@ const PhotoStyles = styled.div`
   background-color: var(--color-white);
   padding: 1vmin 1vmin 8vmin 1vmin;
   transform: rotate(${props => props.offset * 3}deg)
-    translate3d(${props => props.offset * -100}%, 300px, 0) scale(1.3);
-  transition: all 1s ease-in-out;
+    translate3d(${props => props.offset * -100}%, 300px, 0) scale(1.6);
+  transition: all 1.2s cubic-bezier(0.33, 0, 0.66, 0.33);
   justify-self: center;
   width: 100%;
   box-shadow: ${props => props.offset * 30}vmin -10vmin 5px rgba(0, 0, 0, 0.7);
@@ -22,24 +22,24 @@ const PhotoStyles = styled.div`
     justify-self: end;
     padding-top: 4vmin;
   }
-`;
+`
 
 const Photo = ({ photo, index }) => {
   if (!photo.asset) {
-    return null;
+    return null
   }
   const [ref, inView] = useInView({
     triggerOnce: false,
-    threshold: 0
-  });
-  const offset = index % 2 === 0 ? 1 : -1;
+    threshold: 0,
+  })
+  const offset = index % 2 === 0 ? 1 : -1
   const color =
     !photo.asset.metadata.palette.vibrant === null
       ? photo.asset.metadata.palette.vibrant.background
-      : photo.asset.metadata.palette.dominant.background;
-  const shadow = hexToRgba(color, 0.15);
-  const px = [`64px`, `32px`, `16px`, `8px`, `4px`];
-  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`);
+      : photo.asset.metadata.palette.dominant.background
+  const shadow = hexToRgba(color, 0.15)
+  const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
+  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (
     <PhotoStyles
       ref={ref}
@@ -54,14 +54,14 @@ const Photo = ({ photo, index }) => {
         style={{
           outline: "1px solid transparent",
           WebkitBackfaceVisibility: "hidden",
-          WebkitPerspective: 1000
+          WebkitPerspective: 1000,
         }}
         fluid={photo.asset.fluid}
         alt={photo.alt}
       />
       <span className="handwriting">{photo.caption}</span>
     </PhotoStyles>
-  );
-};
+  )
+}
 
-export default Photo;
+export default Photo

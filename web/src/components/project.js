@@ -1,16 +1,17 @@
-import { format, distanceInWords, differenceInDays } from "date-fns";
-import React from "react";
-import styled from "styled-components";
-import { Link } from "gatsby";
-import { buildImageObj } from "../lib/helpers";
-import { imageUrlFor } from "../lib/image-url";
-import BlockContent from "./block-content";
-import Container from "./container";
-import PhotosContainer from "./photos-container";
-import RoleList from "./role-list";
-import Photo from "./photo";
+import { format, distanceInWords, differenceInDays } from "date-fns"
+import React from "react"
+import styled from "styled-components"
+import { Link } from "gatsby"
+import { buildImageObj } from "../lib/helpers"
+import { imageUrlFor } from "../lib/image-url"
+import BlockContent from "./block-content"
+import Container from "./container"
+import PhotosContainer from "./photos-container"
+import RoleList from "./role-list"
+import Photo from "./photo"
 
 const ProjectStyles = styled.article`
+  overflow: hidden;
   .title {
     font-weight: 900;
     font-size: var(--font-title3-size);
@@ -100,7 +101,7 @@ const ProjectStyles = styled.article`
     line-height: inherit;
     margin: 0.5rem 0 0;
   }
-`;
+`
 
 function Project(props) {
   const {
@@ -111,8 +112,8 @@ function Project(props) {
     members,
     photos,
     publishedAt,
-    relatedProjects
-  } = props;
+    relatedProjects,
+  } = props
   return (
     <ProjectStyles>
       {props.mainImage && mainImage.asset && (
@@ -183,7 +184,7 @@ function Project(props) {
           photos.map((photo, i) => <Photo key={photo.asset._id} photo={photo} index={i} />)}
       </PhotosContainer>
     </ProjectStyles>
-  );
+  )
 }
 
-export default Project;
+export default Project
