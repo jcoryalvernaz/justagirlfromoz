@@ -1,10 +1,11 @@
-import {Link} from 'gatsby'
-import React from 'react'
-import ProjectPreview from './project-preview'
-import styled from 'styled-components'
+import { Link } from "gatsby"
+import React from "react"
+import ProjectPreview from "./project-preview"
+import styled from "styled-components"
 
 const GridStyles = styled.div`
-  margin: 2em 0 4em;
+  z-index: 20;
+  margin: -2em 0 4em;
   .headline {
     font-size: var(--font-micro-size);
     line-height: var(--font-micro-line-height);
@@ -41,18 +42,17 @@ const GridStyles = styled.div`
   }
 `
 
-function ProjectPreviewGrid (props) {
+function ProjectPreviewGrid(props) {
   return (
     <GridStyles>
-      {props.title && <h2 className='headline'>{props.title}</h2>}
-      <ul className='grid'>
+      <ul className="grid">
         {props.nodes &&
           props.nodes.map(node => (
             <li
               style={{
                 gridRowEnd: `span ${Math.floor(
                   node.mainImage.asset.metadata.dimensions.height / 1000
-                )}`
+                )}`,
               }}
               key={node.id}
             >
@@ -61,7 +61,7 @@ function ProjectPreviewGrid (props) {
           ))}
       </ul>
       {props.browseMoreHref && (
-        <div className='browseMoreNav'>
+        <div className="browseMoreNav">
           <Link to={props.browseMoreHref}>Browse more</Link>
         </div>
       )}
@@ -70,9 +70,9 @@ function ProjectPreviewGrid (props) {
 }
 
 ProjectPreviewGrid.defaultProps = {
-  title: '',
+  title: "",
   nodes: [],
-  browseMoreHref: ''
+  browseMoreHref: "",
 }
 
 export default ProjectPreviewGrid

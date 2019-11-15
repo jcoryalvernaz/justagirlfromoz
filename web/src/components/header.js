@@ -1,13 +1,29 @@
-import {Link} from 'gatsby'
-import React from 'react'
-import Icon from './icon'
-import {cn} from '../lib/helpers'
-import styled from 'styled-components'
+import { Link } from "gatsby"
+import React from "react"
+import Icon from "./icon"
+import { cn } from "../lib/helpers"
+import styled from "styled-components"
+
+import camera from "../images/camera.svg"
 
 const HeaderStyles = styled.header`
+  background: url(${camera});
   position: relative;
-  z-index: 100;
+  display: grid;
+  .gradient {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 34.99%,
+      rgba(0, 0, 0, 0) 35%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+  }
   .wrapper {
+    position: relative;
     margin: 0 auto;
     max-width: 960px;
     padding: 1em;
@@ -96,24 +112,25 @@ const HeaderStyles = styled.header`
   }
 `
 
-const Header = ({onHideNav, onShowNav, showNav, siteTitle}) => (
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
   <HeaderStyles>
-    <div className='wrapper'>
-      <div className='branding'>
-        <Link to='/'>{siteTitle}</Link>
+    <div className="gradient">
+      <div className="wrapper">
+        <div className="branding">
+          <Link to="/">{siteTitle}</Link>
+        </div>
+        <button className="toggleNavButton" onClick={showNav ? onHideNav : onShowNav}>
+          <Icon symbol="hamburger" />
+        </button>
+
+        <nav className={cn("nav", showNav && "showNav")}>
+          <ul>
+            <li>
+              <Link to="/archive/">Archive</Link>
+            </li>
+          </ul>
+        </nav>
       </div>
-
-      <button className='toggleNavButton' onClick={showNav ? onHideNav : onShowNav}>
-        <Icon symbol='hamburger' />
-      </button>
-
-      <nav className={cn('nav', showNav && 'showNav')}>
-        <ul>
-          <li>
-            <Link to='/archive/'>Archive</Link>
-          </li>
-        </ul>
-      </nav>
     </div>
   </HeaderStyles>
 )
