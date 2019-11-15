@@ -78,15 +78,7 @@ const Photo = ({ photo, index, selectImage }) => {
             View
           </button>
         </OverlayStyles>
-        <Img
-          style={{
-            outline: "1px solid transparent",
-            WebkitBackfaceVisibility: "hidden",
-            WebkitPerspective: 1000,
-          }}
-          fluid={photo.asset.fluid}
-          alt={photo.alt}
-        />
+        <Img fluid={photo.asset.fluid} alt={photo.alt} />
       </div>
       <span className="handwriting">{photo.caption}</span>
     </PhotoStyles>
