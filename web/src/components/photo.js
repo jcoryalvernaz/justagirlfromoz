@@ -58,10 +58,7 @@ const Photo = ({ photo, index, selectImage }) => {
     !photo.asset.metadata.palette.vibrant === null
       ? photo.asset.metadata.palette.vibrant.background
       : photo.asset.metadata.palette.dominant.background
-  const shadow = hexToRgba(color, 0.15)
   const overlay = hexToRgba(color, 0.9)
-  const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
-  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (
     <PhotoStyles
       ref={ref}
