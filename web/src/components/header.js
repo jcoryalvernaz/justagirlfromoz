@@ -5,6 +5,7 @@ import { cn } from "../lib/helpers"
 import styled from "styled-components"
 
 import camera from "../images/camera.svg"
+import logo from "../images/logo.svg"
 
 const HeaderStyles = styled.header`
   background: url(${camera});
@@ -34,7 +35,6 @@ const HeaderStyles = styled.header`
   }
   .branding {
     font-weight: 600;
-    flex: 1;
     a {
       display: inline-block;
       padding: 0.5em;
@@ -119,10 +119,10 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
         <div className="branding">
           <Link to="/">{siteTitle}</Link>
         </div>
+        <img style={{height: '60vmin'}} src={logo}/>
         <button className="toggleNavButton" onClick={showNav ? onHideNav : onShowNav}>
           <Icon symbol="hamburger" />
         </button>
-
         <nav className={cn("nav", showNav && "showNav")}>
           <ul>
             <li>
