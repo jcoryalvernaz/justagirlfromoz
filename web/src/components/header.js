@@ -4,7 +4,7 @@ import Icon from "./icon"
 import { cn } from "../lib/helpers"
 import styled from "styled-components"
 
-import camera from "../images/camera.svg"
+import camera from "../images/pattern.svg"
 import logo from "../images/logo.svg"
 
 const HeaderStyles = styled.header`
@@ -28,12 +28,15 @@ const HeaderStyles = styled.header`
     margin: 0 auto;
     max-width: 960px;
     padding: 1em;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     @media (min-width: 450px) {
       padding: 1.5em 1.5em;
     }
   }
   .branding {
+    grid-column: 2 / span 1;
+    padding-bottom: 2rem;
     font-weight: 600;
     a {
       display: inline-block;
@@ -65,6 +68,7 @@ const HeaderStyles = styled.header`
     }
   }
   .nav {
+    grid-column: span 1 / -1;
     display: none;
     ul {
       margin: 0;
@@ -110,6 +114,9 @@ const HeaderStyles = styled.header`
   .showNav {
     display: block;
   }
+  .logo {
+    height: 70vmin;
+  }
 `
 
 const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
@@ -117,9 +124,8 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
     <div className="gradient">
       <div className="wrapper">
         <div className="branding">
-          <Link to="/">{siteTitle}</Link>
+          <img classname="logo" src={logo} alt="Just a Girl From Oz" />
         </div>
-        <img style={{height: '60vmin'}} src={logo}/>
         <button className="toggleNavButton" onClick={showNav ? onHideNav : onShowNav}>
           <Icon symbol="hamburger" />
         </button>

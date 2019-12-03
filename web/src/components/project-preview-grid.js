@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 const GridStyles = styled.div`
   z-index: 20;
-  margin: -2em 0 4em;
+  margin: -4rem 0 4em;
   .headline {
     font-size: var(--font-micro-size);
     line-height: var(--font-micro-line-height);
