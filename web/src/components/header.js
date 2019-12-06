@@ -115,7 +115,8 @@ const HeaderStyles = styled.header`
     display: block;
   }
   .logo {
-    height: 70vmin;
+    height: 60vmin;
+    min-height: 200px;
   }
 `
 
@@ -124,7 +125,7 @@ const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
     <div className="gradient">
       <div className="wrapper">
         <div className="branding">
-          <img classname="logo" src={logo} alt="Just a Girl From Oz" />
+          <img className="logo" src={logo} alt="Just a Girl From Oz" />
         </div>
         <button className="toggleNavButton" onClick={showNav ? onHideNav : onShowNav}>
           <Icon symbol="hamburger" />
