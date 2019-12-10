@@ -3,6 +3,7 @@ import React from "react"
 import Icon from "./icon"
 import { cn } from "../lib/helpers"
 import styled from "styled-components"
+import { animated, config, useSpring } from "react-spring"
 
 import camera from "../images/pattern.svg"
 import logo from "../images/logo.svg"
@@ -120,26 +121,39 @@ const HeaderStyles = styled.header`
   }
 `
 
-const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => (
-  <HeaderStyles>
-    <div className="gradient">
-      <div className="wrapper">
-        <div className="branding">
-          <img className="logo" src={logo} alt="Just a Girl From Oz" />
+const Header = ({ onHideNav, onShowNav, showNav, siteTitle }) => {
+  const fadeUpProps = useSpring({
+    config: config.slow,
+    from: { opacity: 0, transform: `translate3d(0, 30px, 0)` },
+    to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
+  })
+
+  return (
+    <HeaderStyles>
+      <div className="gradient">
+        <div className="wrapper">
+          <div className="branding">
+            <animated.img
+              style={fadeUpProps}
+              className="logo"
+              src={logo}
+              alt="Just a Girl From Oz"
+            />
+          </div>
+          <button className="toggleNavButton" onClick={showNav ? onHideNav : onShowNav}>
+            <Icon symbol="hamburger" />
+          </button>
+          <nav className={cn("nav", showNav && "showNav")}>
+            <ul>
+              <li>
+                <Link to="/archive/">Archive</Link>
+              </li>
+            </ul>
+          </nav>
         </div>
-        <button className="toggleNavButton" onClick={showNav ? onHideNav : onShowNav}>
-          <Icon symbol="hamburger" />
-        </button>
-        <nav className={cn("nav", showNav && "showNav")}>
-          <ul>
-            <li>
-              <Link to="/archive/">Archive</Link>
-            </li>
-          </ul>
-        </nav>
       </div>
-    </div>
-  </HeaderStyles>
-)
+    </HeaderStyles>
+  )
+}
 
 export default Header

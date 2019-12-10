@@ -2,8 +2,9 @@ import { Link } from "gatsby"
 import React from "react"
 import ProjectPreview from "./project-preview"
 import styled from "styled-components"
+import { animated, useSpring, config } from "react-spring"
 
-const GridStyles = styled.div`
+const GridStyles = styled(animated.div)`
   z-index: 20;
   margin: -4rem 0 4em;
   .headline {
@@ -43,8 +44,15 @@ const GridStyles = styled.div`
 `
 
 function ProjectPreviewGrid(props) {
+  const fadeUpProps = useSpring({
+    config: config.slow,
+    delay: 600,
+    from: { opacity: 0, transform: `translate3d(0, 50px, 0)` },
+    to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
+  })
+
   return (
-    <GridStyles>
+    <GridStyles style={fadeUpProps}>
       <ul className="grid">
         {props.nodes &&
           props.nodes.map(node => (
