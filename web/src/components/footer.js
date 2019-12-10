@@ -1,5 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
+import React from "react"
+import styled from "styled-components"
+
+import heart from "../images/heart.svg"
 
 const FooterStyles = styled.footer`
   border-top: 1px solid var(--color-gray);
@@ -11,25 +13,30 @@ const FooterStyles = styled.footer`
       padding: 6em 2em 2em;
     }
   }
-  .companyAddress {
-    text-align: center;
-    margin: 0 0 1rem;
-  }
   .siteInfo {
     text-align: center;
     font-size: var(--font-small-size);
     line-height: var(--font-small-line-height);
+  }
+  .city {
+    text-align: center;
+    margin: 1rem;
+  }
+  .heart {
+    margin-bottom: -0.2rem;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    height: 1rem;
   }
 `
 
 const Footer = () => {
   return (
     <FooterStyles>
-      <div className='footerWrapper'>
-        <div className='siteInfo'>
-          © {new Date().getFullYear()}, Built with <a href='https://www.sanity.io'>Sanity</a> &amp;
-          {` `}
-          <a href='https://www.gatsbyjs.org'>Gatsby</a>
+      <div className="footerWrapper">
+        <div className="siteInfo">© {new Date().getFullYear()}, Just a Girl from Oz</div>
+        <div className="city">
+          Made with <img className="heart" src={heart} alt="love" /> in Reno
         </div>
       </div>
     </FooterStyles>
