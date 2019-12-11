@@ -58,6 +58,12 @@ const Header = ({ isHomePage }) => {
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
 
+  const fadeProps = useSpring({
+    config: config.slow,
+    from: { opacity: 0 },
+    to: { opacity: 1 },
+  })
+
   const backButtonProps = useSpring({
     config: config.slow,
     from: { opacity: 0, transform: `translate3d(-30px, 0, 0)` },
@@ -76,12 +82,7 @@ const Header = ({ isHomePage }) => {
             </animated.div>
           )}
           <div className="branding">
-            <animated.img
-              style={fadeUpProps}
-              className="logo"
-              src={logo}
-              alt="Just a Girl From Oz"
-            />
+            <animated.img style={fadeProps} className="logo" src={logo} alt="Just a Girl From Oz" />
           </div>
         </div>
       </div>

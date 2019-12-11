@@ -48,6 +48,12 @@ export default {
       type: "text",
       description: "Add some text for the About Me section of your site.",
       title: "About Me"
+    },
+    {
+      name: "socialMedia",
+      title: "Social Media",
+      type: "array",
+      of: [{ type: "socialMedia" }]
     }
   ]
 };
