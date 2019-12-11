@@ -37,12 +37,6 @@ function ProjectPreview(props) {
             <OverlayStyles overlay={overlay} data-name="image-overlay">
               <h2>{props.title}</h2>
             </OverlayStyles>
-            {/* <MainImage
-              shadowArray={shadowArray}
-              overlay={overlay}
-              src={imageUrlFor(buildImageObj(props.mainImage)).url()}
-              alt={props.mainImage.alt}
-            /> */}
             <Img
               style={{
                 boxShadow: shadowArray.join(`, `),
@@ -55,14 +49,6 @@ function ProjectPreview(props) {
             />
           </>
         )}
-
-        {/* //TODO use rawExcerpt in SEO component for social
-      <h3 className={cn(responsiveTitle3, styles.title)}>{props.title}</h3>
-      {props._rawExcerpt && (
-        <div className={styles.excerpt}>
-          <BlockText blocks={props._rawExcerpt} />
-        </div>
-      )} */}
       </Link>
     </PreviewStyles>
   )
