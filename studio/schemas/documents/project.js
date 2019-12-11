@@ -1,86 +1,86 @@
-import {format} from 'date-fns'
+import { format } from "date-fns";
 
 export default {
-  name: 'project',
-  title: 'Project',
-  type: 'document',
+  name: "project",
+  title: "Project",
+  type: "document",
   fields: [
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string'
+      name: "title",
+      title: "Title",
+      type: "string"
     },
     {
-      name: 'slug',
-      title: 'Slug',
-      type: 'slug',
-      description: 'Some frontend will require a slug to be set to be able to show the project',
+      name: "slug",
+      title: "Slug",
+      type: "slug",
+      description: "Some frontend will require a slug to be set to be able to show the project",
       options: {
-        source: 'title',
+        source: "title",
         maxLength: 96
       }
     },
     {
-      name: 'publishedAt',
-      title: 'Published at',
-      description: 'You can use this field to schedule projects where you show them',
-      type: 'datetime'
+      name: "publishedAt",
+      title: "Published at",
+      description: "You can use this field to schedule projects where you show them",
+      type: "datetime"
     },
     {
-      name: 'excerpt',
-      title: 'Excerpt',
-      type: 'simplePortableText'
+      name: "excerpt",
+      title: "Excerpt",
+      type: "simplePortableText"
     },
     {
-      name: 'members',
-      title: 'Members',
-      type: 'array',
-      of: [{type: 'projectMember'}]
+      name: "members",
+      title: "Members",
+      type: "array",
+      of: [{ type: "projectMember" }]
     },
     {
-      name: 'mainImage',
-      title: 'Main image',
-      type: 'figure'
+      name: "mainImage",
+      title: "Main image",
+      type: "figure"
     },
     {
-      name: 'photos',
-      title: 'Photos',
-      type: 'array',
-      of: [{type: 'figure'}]
+      name: "photos",
+      title: "Photos",
+      type: "array",
+      of: [{ type: "figure" }]
     },
     {
-      name: 'categories',
-      title: 'Categories',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}]
+      name: "categories",
+      title: "Categories",
+      type: "array",
+      of: [{ type: "reference", to: { type: "category" } }]
     },
     {
-      name: 'body',
-      title: 'Body',
-      type: 'projectPortableText'
+      name: "body",
+      title: "Body",
+      type: "projectPortableText"
     },
     {
-      name: 'relatedProjects',
-      title: 'Related projects',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'project'}}]
+      name: "relatedProjects",
+      title: "Related projects",
+      type: "array",
+      of: [{ type: "reference", to: { type: "project" } }]
     }
   ],
   preview: {
     select: {
-      title: 'title',
-      publishedAt: 'publishedAt',
-      slug: 'slug',
-      media: 'mainImage'
+      title: "title",
+      publishedAt: "publishedAt",
+      slug: "slug",
+      media: "mainImage"
     },
-    prepare ({title = 'No title', publishedAt, slug = {}, media}) {
-      const dateSegment = format(publishedAt, 'YYYY/MM')
-      const path = `/${dateSegment}/${slug.current}/`
+    prepare({ title = "No title", publishedAt, slug = {}, media }) {
+      const dateSegment = format(publishedAt, "YYYY/MM");
+      const path = `/${dateSegment}/${slug.current}/`;
       return {
         title,
         media,
-        subtitle: publishedAt ? path : 'Missing publishing date'
-      }
+        subtitle: publishedAt ? path : "Missing publishing date"
+      };
     }
   }
-}
+};

@@ -18,7 +18,7 @@ const FooterStyles = styled.footer`
     font-size: var(--font-small-size);
     line-height: var(--font-small-line-height);
   }
-  .city {
+  .createdInfo {
     text-align: center;
     margin: 1rem;
   }
@@ -35,7 +35,7 @@ const Footer = () => {
     <FooterStyles>
       <div className="footerWrapper">
         <div className="siteInfo">© {new Date().getFullYear()}, Just a Girl from Oz</div>
-        <div className="city">
+        <div className="createdInfo">
           Made with <img className="heart" src={heart} alt="love" /> in Reno
         </div>
       </div>
