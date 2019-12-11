@@ -27,9 +27,10 @@ export default {
       type: "datetime"
     },
     {
-      name: "excerpt",
-      title: "Excerpt",
-      type: "simplePortableText"
+      name: "description",
+      title: "Description",
+      description: "Important for SEO and Social Media",
+      type: "text"
     },
     {
       name: "members",
