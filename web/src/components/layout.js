@@ -1,9 +1,9 @@
-import React from 'react'
-import Header from './header'
-import Footer from './footer'
-import styled from 'styled-components'
+import React from "react"
+import Header from "./header"
+import Footer from "./footer"
+import styled from "styled-components"
 
-import '../styles/layout.css'
+import "../styles/layout.css"
 
 const MainStyles = styled.main`
   background: var(--color-dark-gray);
@@ -13,12 +13,16 @@ const MainStyles = styled.main`
   }
 `
 
-const Layout = ({children, onHideNav, onShowNav, showNav, siteTitle}) => (
-  <>
-    <Header siteTitle={siteTitle} onHideNav={onHideNav} onShowNav={onShowNav} showNav={showNav} />
-    <MainStyles>{children}</MainStyles>
-    <Footer />
-  </>
-)
+const Layout = ({ children }) => {
+  const isHomePage = window.location.pathname === "/"
+
+  return (
+    <>
+      <Header isHomePage={isHomePage} />
+      <MainStyles>{children}</MainStyles>
+      <Footer />
+    </>
+  )
+}
 
 export default Layout
