@@ -1,24 +1,24 @@
-import React from 'react'
-import {graphql} from 'gatsby'
-import Container from '../components/container'
-import GraphQLErrorList from '../components/graphql-error-list'
-import SEO from '../components/seo'
-import Layout from '../containers/layout'
+import React from "react"
+import { graphql } from "gatsby"
+import Container from "../components/container"
+import GraphQLErrorList from "../components/graphql-error-list"
+import SEO from "../components/seo"
+import Layout from "../containers/layout"
 import {
   mapEdgesToNodes,
   filterOutDocsWithoutSlugs,
-  filterOutDocsPublishedInTheFuture
-} from '../lib/helpers'
-import ProjectPreviewGrid from '../components/project-preview-grid'
+  filterOutDocsPublishedInTheFuture,
+} from "../lib/helpers"
+import ProjectPreviewGrid from "../components/project-preview-grid"
 
 export const query = graphql`
   query CategoryTemplateQuery($id: String!) {
     projects: allSanityProject(
-      sort: {fields: [publishedAt], order: DESC}
+      sort: { fields: [publishedAt], order: DESC }
       filter: {
-        categories: {elemMatch: {id: {eq: $id}}}
-        slug: {current: {ne: null}}
-        publishedAt: {ne: null}
+        categories: { elemMatch: { id: { eq: $id } } }
+        slug: { current: { ne: null } }
+        publishedAt: { ne: null }
       }
     ) {
       edges {
@@ -63,7 +63,6 @@ export const query = graphql`
             alt
           }
           title
-          _rawExcerpt
           slug {
             current
           }
@@ -74,20 +73,20 @@ export const query = graphql`
 `
 
 const ProjectTemplate = props => {
-  const {data, errors, pageContext} = props
+  const { data, errors, pageContext } = props
 
   const projectNodes = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
-      .filter(filterOutDocsWithoutSlugs)
-      .filter(filterOutDocsPublishedInTheFuture)
+        .filter(filterOutDocsWithoutSlugs)
+        .filter(filterOutDocsPublishedInTheFuture)
     : []
 
-  const {category} = pageContext
+  const { category } = pageContext
 
   return (
     <Layout>
-      {errors && <SEO title='GraphQL Error' />}
-      {category && <SEO title={category.title || 'Untitled'} />}
+      {errors && <SEO title="GraphQL Error" />}
+      {category && <SEO title={category.title || "Untitled"} />}
 
       {errors && (
         <Container>

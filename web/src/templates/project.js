@@ -97,6 +97,7 @@ export const query = graphql`
         caption
       }
       title
+      description
       slug {
         current
       }
@@ -139,7 +140,15 @@ const ProjectTemplate = props => {
   return (
     <Layout>
       {errors && <SEO title="GraphQL Error" />}
-      {project && <SEO title={project.title || "Untitled"} />}
+      {project && (
+        <SEO
+          title={project.title || "Untitled"}
+          description={project.description}
+          image={project.mainImage.asset.fluid}
+          imageAlt={project.mainImage.alt}
+          isProject={true}
+        />
+      )}
 
       {errors && (
         <Container>

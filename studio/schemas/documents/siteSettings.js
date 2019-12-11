@@ -21,6 +21,12 @@ export default {
       description: "Describe your portfolio for search engines and social media."
     },
     {
+      name: "siteUrl",
+      type: "url",
+      title: "Site URL",
+      description: "Important for search engines and social media."
+    },
+    {
       name: "keywords",
       type: "array",
       title: "Keywords",

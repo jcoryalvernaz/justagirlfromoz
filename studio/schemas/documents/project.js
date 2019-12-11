@@ -29,7 +29,7 @@ export default {
     {
       name: "description",
       title: "Description",
-      description: "Important for SEO and Social Media",
+      description: "Describe your project for search engines and social media.",
       type: "text"
     },
     {
