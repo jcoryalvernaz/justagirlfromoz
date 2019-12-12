@@ -101,7 +101,7 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
     <HeaderStyles>
       <div className="gradient">
         <div className="wrapper">
-          {!isHomePage && (
+          {isHomePage === false && (
             <>
               <BackButtonStyles style={backButtonProps}>
                 <Link to="/">
