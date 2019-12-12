@@ -3,6 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import { animated, config, useSpring } from "react-spring"
 import { format, distanceInWords, differenceInDays } from "date-fns"
+import PropTypes from "prop-types"
 
 import SocialMediaList from "./social-media-list"
 import LeftArrow from "../assets/left-arrow"
@@ -133,6 +134,22 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
       </div>
     </HeaderStyles>
   )
+}
+
+Header.defaultProps = {
+  isHomePage: true,
+  siteTitle: "",
+  title: "",
+  publishedAt: "",
+  count: 0,
+}
+
+Header.propTypes = {
+  isHomePage: PropTypes.bool,
+  siteTitle: PropTypes.string,
+  title: PropTypes.string,
+  publishedAt: PropTypes.string,
+  count: PropTypes.number,
 }
 
 export default Header

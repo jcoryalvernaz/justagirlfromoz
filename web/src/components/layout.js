@@ -15,7 +15,6 @@ const MainStyles = styled.main`
 
 const Layout = ({ children, siteTitle, headerTitle, headerDate, projectsCount }) => {
   const isHomePage = typeof window !== "undefined" ? window.location.pathname === "/" : null
-
   return (
     <>
       <Header
