@@ -141,7 +141,7 @@ Header.defaultProps = {
   siteTitle: "",
   title: "",
   publishedAt: "",
-  count: 0,
+  count: null,
 }
 
 Header.propTypes = {
