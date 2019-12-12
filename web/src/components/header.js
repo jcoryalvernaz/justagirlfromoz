@@ -2,6 +2,7 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import { animated, config, useSpring } from "react-spring"
+import { format, distanceInWords, differenceInDays } from "date-fns"
 
 import SocialMediaList from "./social-media-list"
 import LeftArrow from "../assets/left-arrow"
@@ -17,6 +18,8 @@ const HeaderStyles = styled.header`
     grid-row: 1 / -1;
     width: 100%;
     height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
     background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0) 34.99%,
@@ -26,43 +29,65 @@ const HeaderStyles = styled.header`
   }
   .wrapper {
     position: relative;
-    margin: 0 auto;
+    justify-self: center;
+    width: 100%;
     max-width: 960px;
-    padding: 1em;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    @media (min-width: 450px) {
-      padding: 1.5em 1.5em;
-    }
-  }
-  .branding {
-    grid-column: 2 / span 1;
-    padding-bottom: 2rem;
+    grid-template-columns: 1fr;
   }
   .logo {
-    height: 60vmin;
-    min-height: 200px;
-  }
-  .arrow {
-    transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
-    &:hover,
-    &:focus {
-      transform: translateX(-6px);
-    }
+    margin: 1rem 0;
+    width: 200px;
   }
 `
 
-const Header = ({ isHomePage }) => {
+const BackButtonStyles = styled(animated.div)`
+  justify-self: start;
+  padding-left: 1rem;
+  &:hover,
+  &:focus {
+    .arrow {
+      transform: translateX(-6px);
+    }
+  }
+  .arrow {
+    align-self: center;
+    transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+  .logo {
+    width: 100px;
+  }
+  a {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+`
+
+const BrandingStyles = styled(animated.img)`
+  justify-self: center;
+`
+
+const TitleStyles = styled(animated.h1)`
+  text-align: center;
+  margin: 1rem 0;
+`
+const InfoStyles = styled(animated.div)`
+  text-align: center;
+  margin-bottom: 4rem;
+`
+
+const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
   const fadeUpProps = useSpring({
     config: config.slow,
     from: { opacity: 0, transform: `translate3d(0, 30px, 0)` },
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
 
-  const fadeProps = useSpring({
+  const fadeUpPropsDelay = useSpring({
     config: config.slow,
-    from: { opacity: 0 },
-    to: { opacity: 1 },
+    delay: 250,
+    from: { opacity: 0, transform: `translate3d(0, 30px, 0)` },
+    to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
 
   const backButtonProps = useSpring({
@@ -75,17 +100,35 @@ const Header = ({ isHomePage }) => {
     <HeaderStyles>
       <div className="gradient">
         <div className="wrapper">
-          {isHomePage === false && (
-            <animated.div style={backButtonProps}>
-              <Link to="/">
-                <LeftArrow />
-              </Link>
-            </animated.div>
+          {!isHomePage && (
+            <>
+              <BackButtonStyles style={backButtonProps}>
+                <Link to="/">
+                  <LeftArrow />
+                  <img className="logo" src={logo} alt={siteTitle} />
+                </Link>
+              </BackButtonStyles>
+              <TitleStyles style={fadeUpProps}>{title}</TitleStyles>
+              {publishedAt && (
+                <InfoStyles style={fadeUpPropsDelay}>
+                  {differenceInDays(new Date(publishedAt), new Date()) > 3
+                    ? distanceInWords(new Date(publishedAt), new Date())
+                    : format(new Date(publishedAt), "MMMM Do YYYY")}
+                </InfoStyles>
+              )}
+              {count && (
+                <InfoStyles style={fadeUpPropsDelay}>
+                  {count} Projects in {title}
+                </InfoStyles>
+              )}
+            </>
           )}
-          <div className="branding">
-            <animated.img style={fadeProps} className="logo" src={logo} alt="Just a Girl From Oz" />
-          </div>
-          <SocialMediaList />
+          {isHomePage && (
+            <>
+              <BrandingStyles style={fadeUpProps} className="logo" src={logo} alt={siteTitle} />
+              <SocialMediaList />
+            </>
+          )}
         </div>
       </div>
     </HeaderStyles>

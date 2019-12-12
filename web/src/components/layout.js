@@ -13,12 +13,18 @@ const MainStyles = styled.main`
   }
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ children, siteTitle, headerTitle, headerDate, projectsCount }) => {
   const isHomePage = typeof window !== "undefined" ? window.location.pathname === "/" : null
 
   return (
     <>
-      <Header isHomePage={isHomePage} />
+      <Header
+        isHomePage={isHomePage}
+        siteTitle={siteTitle}
+        title={headerTitle}
+        publishedAt={headerDate}
+        count={projectsCount}
+      />
       <MainStyles>{children}</MainStyles>
       <Footer />
     </>

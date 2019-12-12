@@ -1,4 +1,3 @@
-import { format, distanceInWords, differenceInDays } from "date-fns"
 import React, { useState } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
@@ -139,16 +138,7 @@ const Project = props => {
     setState({ overlayImageFluid: fluid, overlayImageAlt: alt, isVisible: true })
   }
 
-  const {
-    _rawBody,
-    title,
-    categories,
-    mainImage,
-    members,
-    photos,
-    publishedAt,
-    relatedProjects,
-  } = props
+  const { _rawBody, categories, mainImage, members, photos, relatedProjects } = props
   return (
     <ProjectStyles isVisible={state.isVisible}>
       {state.isVisible && (
@@ -168,18 +158,8 @@ const Project = props => {
       )}
       <Container>
         <div className="grid">
-          <div className="mainContent">
-            <h1 className="title">{title}</h1>
-            {_rawBody && <BlockContent blocks={_rawBody || []} />}
-          </div>
+          <div className="mainContent">{_rawBody && <BlockContent blocks={_rawBody || []} />}</div>
           <aside className="metaContent">
-            {publishedAt && (
-              <div className="publishedAt">
-                {differenceInDays(new Date(publishedAt), new Date()) > 3
-                  ? distanceInWords(new Date(publishedAt), new Date())
-                  : format(new Date(publishedAt), "MMMM Do YYYY")}
-              </div>
-            )}
             {members && members.length > 0 && <RoleList items={members} title="Project members" />}
             {categories && categories.length > 0 && (
               <div className="categories">

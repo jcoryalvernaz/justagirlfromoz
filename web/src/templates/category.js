@@ -72,7 +72,7 @@ export const query = graphql`
   }
 `
 
-const ProjectTemplate = props => {
+const CategoryTemplate = props => {
   const { data, errors, pageContext } = props
 
   const projectNodes = (data || {}).projects
@@ -84,7 +84,7 @@ const ProjectTemplate = props => {
   const { category } = pageContext
 
   return (
-    <Layout>
+    <Layout headerTitle={category.title} projectsCount={projectNodes.length}>
       {errors && <SEO title="GraphQL Error" />}
       {category && <SEO title={category.title || "Untitled"} />}
 
@@ -102,4 +102,4 @@ const ProjectTemplate = props => {
   )
 }
 
-export default ProjectTemplate
+export default CategoryTemplate

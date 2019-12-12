@@ -138,7 +138,7 @@ const ProjectTemplate = props => {
   const { data, errors } = props
   const project = data && data.project
   return (
-    <Layout>
+    <Layout headerTitle={project.title} headerDate={project.publishedAt}>
       {errors && <SEO title="GraphQL Error" />}
       {project && (
         <SEO
