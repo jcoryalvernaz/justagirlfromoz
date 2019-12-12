@@ -28,7 +28,7 @@ const ProjectStyles = styled(animated.article)`
     padding: 1.5rem;
   }
   .overlay-inner {
-    background-color: var(--color-white);
+    background-color: var(--color-dark-gray);
     width: 100%;
     max-width: 960px;
     padding: 1vmin;
@@ -36,7 +36,7 @@ const ProjectStyles = styled(animated.article)`
   .close {
     cursor: pointer;
     background: none;
-    color: var(--color-black);
+    color: var(--color-white);
     border: 0;
   }
   .mainImage {
@@ -137,7 +137,7 @@ const Project = props => {
         <div className="overlay">
           <div className="overlay-inner">
             <button className="close" onClick={() => setState({ isVisible: false })}>
-              x Close
+              X Close
             </button>
             <Img fluid={state.overlayImageFluid} alt={state.overlayImageAlt} />
           </div>
