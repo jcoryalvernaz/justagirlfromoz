@@ -3,6 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import { animated, config, useSpring } from "react-spring"
 
+import SocialMediaList from "./social-media-list"
 import LeftArrow from "../assets/left-arrow"
 import camera from "../images/pattern.svg"
 import logo from "../images/logo.svg"
@@ -84,6 +85,7 @@ const Header = ({ isHomePage }) => {
           <div className="branding">
             <animated.img style={fadeProps} className="logo" src={logo} alt="Just a Girl From Oz" />
           </div>
+          <SocialMediaList />
         </div>
       </div>
     </HeaderStyles>
