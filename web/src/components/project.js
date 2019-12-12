@@ -117,7 +117,7 @@ const Project = props => {
 
   const fadeUpProps = useSpring({
     config: config.slow,
-    delay: 600,
+    delay: 500,
     from: { opacity: 0, transform: `translate3d(0, 50px, 0)` },
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
