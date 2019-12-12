@@ -14,7 +14,7 @@ const MainStyles = styled.main`
 `
 
 const Layout = ({ children }) => {
-  const isHomePage = window.location.pathname === "/"
+  const isHomePage = typeof window !== "undefined" ? window.location.pathname === "/" : null
 
   return (
     <>
