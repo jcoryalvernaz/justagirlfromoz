@@ -2,14 +2,18 @@ import React, { useState } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import BlockContent from "./block-content"
+import { animated, config, useSpring } from "react-spring"
+import hexToRgba from "hex-to-rgba"
+
 import Container from "./container"
 import PhotosContainer from "./photos-container"
+import BlockContent from "./block-content"
 import RoleList from "./role-list"
 import Photo from "./photo"
 
-const ProjectStyles = styled.article`
-  overflow: hidden;
+const ProjectStyles = styled(animated.article)`
+  margin: -4rem 0 4rem;
+  display: grid;
   .overlay {
     background: rgba(0, 0, 0, 0.5);
     position: fixed;
@@ -26,7 +30,7 @@ const ProjectStyles = styled.article`
   .overlay-inner {
     background-color: var(--color-white);
     width: 100%;
-    max-width: 800px;
+    max-width: 960px;
     padding: 1vmin;
   }
   .close {
@@ -35,39 +39,18 @@ const ProjectStyles = styled.article`
     color: var(--color-black);
     border: 0;
   }
-  .title {
-    font-weight: 900;
-    font-size: var(--font-title3-size);
-    line-height: var(--font-title3-line-height);
-    margin: 1rem 0 2rem;
-    @media (min-width: 450px) {
-      font-size: var(--font-title2-size);
-      line-height: var(--font-title2-line-height);
-    }
-    @media (min-width: 675px) {
-      font-size: var(--font-title1-size);
-      line-height: var(--font-title1-line-height);
-    }
-  }
   .mainImage {
     position: relative;
-    background: #eee;
-    div {
-      max-height: 800px;
-    }
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    display: grid;
+    width: 100%;
+    max-width: 960px;
+    justify-self: center;
   }
   .grid {
     display: grid;
     grid-template-columns: 1fr;
-    grid-column-gap: 2em;
+    grid-column-gap: 2rem;
+    margin-top: 4rem;
     @media (min-width: 675px) {
       grid-template-columns: 3fr 1fr;
     }
@@ -82,14 +65,8 @@ const ProjectStyles = styled.article`
       }
     }
   }
-  .publishedAt {
-    font-size: var(--font-small-size);
-    line-height: var(--font-small-line-height);
-    margin: 1.5rem 0 3rem;
-    color: var(--color-gray);
-  }
   .categories {
-    border-top: 1px solid var(--color-very-light-gray);
+    border-top: 1px solid var(--color-gray);
     margin: 2rem 0 3rem;
     ul {
       list-style: none;
@@ -106,7 +83,7 @@ const ProjectStyles = styled.article`
     margin: 0.5rem 0 0;
   }
   .relatedProjects {
-    border-top: 1px solid var(--color-very-light-gray);
+    border-top: 1px solid var(--color-gray);
     margin: 2rem 0 3rem;
     ul {
       list-style: none;
@@ -138,9 +115,24 @@ const Project = props => {
     setState({ overlayImageFluid: fluid, overlayImageAlt: alt, isVisible: true })
   }
 
+  const fadeUpProps = useSpring({
+    config: config.slow,
+    delay: 600,
+    from: { opacity: 0, transform: `translate3d(0, 50px, 0)` },
+    to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
+  })
+
   const { _rawBody, categories, mainImage, members, photos, relatedProjects } = props
+
+  const color =
+    mainImage.asset.metadata.palette.vibrant !== null
+      ? mainImage.asset.metadata.palette.vibrant.background
+      : mainImage.asset.metadata.palette.dominant.background
+  const shadow = hexToRgba(color, 0.15)
+  const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
+  const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (
-    <ProjectStyles isVisible={state.isVisible}>
+    <ProjectStyles isVisible={state.isVisible} style={fadeUpProps}>
       {state.isVisible && (
         <div className="overlay">
           <div className="overlay-inner">
@@ -151,12 +143,18 @@ const Project = props => {
           </div>
         </div>
       )}
-      {props.mainImage && mainImage.asset && (
-        <div className="mainImage">
-          <Img fluid={mainImage.asset.fluid} alt={mainImage.alt} />
-        </div>
-      )}
       <Container>
+        {mainImage && mainImage.asset && (
+          <div className="mainImage">
+            <Img
+              style={{
+                boxShadow: shadowArray.join(`, `),
+              }}
+              fluid={mainImage.asset.fluid}
+              alt={mainImage.alt}
+            />
+          </div>
+        )}
         <div className="grid">
           <div className="mainContent">{_rawBody && <BlockContent blocks={_rawBody || []} />}</div>
           <aside className="metaContent">
@@ -196,13 +194,13 @@ const Project = props => {
           </aside>
         </div>
       </Container>
-      <PhotosContainer>
-        {photos &&
-          photos.length > 0 &&
-          photos.map((photo, i) => (
+      {photos && photos.length > 0 && (
+        <PhotosContainer>
+          {photos.map((photo, i) => (
             <Photo key={photo.asset._id} photo={photo} index={i} selectImage={selectImage} />
           ))}
-      </PhotosContainer>
+        </PhotosContainer>
+      )}
     </ProjectStyles>
   )
 }

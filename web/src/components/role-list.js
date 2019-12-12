@@ -1,12 +1,12 @@
-import React from 'react'
-import styled from 'styled-components'
-import {buildImageObj} from '../lib/helpers'
-import {imageUrlFor} from '../lib/image-url'
-import {ucfirst} from '../lib/string-utils'
+import React from "react"
+import styled from "styled-components"
+import { buildImageObj } from "../lib/helpers"
+import { imageUrlFor } from "../lib/image-url"
+import { ucfirst } from "../lib/string-utils"
 
 const RoleListStyles = styled.div`
   margin: 2rem 0 3rem;
-  border-top: 1px solid var(--color-very-light-gray);
+  border-top: 1px solid var(--color-gray);
   .headline {
     font-size: inherit;
     line-height: inherit;
@@ -44,23 +44,23 @@ const RoleListStyles = styled.div`
   }
 `
 
-function RoleList ({items, title}) {
+function RoleList({ items, title }) {
   return (
     <RoleListStyles>
-      <h2 className='headline'>{title}</h2>
-      <ul className='list'>
+      <h2 className="headline">{title}</h2>
+      <ul className="list">
         {items.map(item => (
-          <li key={item._key} className='listItem'>
+          <li key={item._key} className="listItem">
             <div>
-              <div className='avatar'>
+              <div className="avatar">
                 {item.person && item.person.image && item.person.image.asset && (
                   <img
                     src={imageUrlFor(buildImageObj(item.person.image))
                       .width(100)
                       .height(100)
-                      .fit('crop')
+                      .fit("crop")
                       .url()}
-                    alt=''
+                    alt=""
                   />
                 )}
               </div>

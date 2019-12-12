@@ -6,15 +6,7 @@ import { animated, useSpring, config } from "react-spring"
 
 const GridStyles = styled(animated.div)`
   z-index: 20;
-  margin: -4rem 0 4em;
-  .headline {
-    font-size: var(--font-micro-size);
-    line-height: var(--font-micro-line-height);
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin: 2rem 0;
-  }
+  margin: -4rem 0 4rem;
   .grid {
     margin: 0;
     padding: 0;
@@ -78,7 +70,6 @@ function ProjectPreviewGrid(props) {
 }
 
 ProjectPreviewGrid.defaultProps = {
-  title: "",
   nodes: [],
   browseMoreHref: "",
 }

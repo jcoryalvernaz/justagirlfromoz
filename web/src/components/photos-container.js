@@ -1,21 +1,20 @@
-import React from "react";
-import styled from "styled-components";
+import React from "react"
+import styled from "styled-components"
 
-import "../styles/custom-properties.css";
+import "../styles/custom-properties.css"
 
 const PhotosContainerStyles = styled.div`
-  max-width: 960px;
   padding: 1.5em;
-  margin: 0 auto;
+  overflow: hidden;
   display: grid;
+  justify-self: center;
+  width: 100%;
   grid-template-columns: 1fr;
-  @media (max-width: 960px) {
-    overflow: hidden;
-  }
-`;
+  margin-bottom: 4rem;
+`
 
 const PhotosContainer = ({ children }) => {
-  return <PhotosContainerStyles>{children}</PhotosContainerStyles>;
-};
+  return <PhotosContainerStyles>{children}</PhotosContainerStyles>
+}
 
-export default PhotosContainer;
+export default PhotosContainer

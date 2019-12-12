@@ -43,9 +43,9 @@ function ProjectPreview(props) {
                 position: "absolute",
                 width: "100%",
                 height: "100%",
-                objectFit: "cover",
               }}
               fluid={props.mainImage.asset.fluid}
+              alt={props.mainImage.alt}
             />
           </>
         )}
