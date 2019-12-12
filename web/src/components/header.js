@@ -84,11 +84,17 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
 
-  const fadeUpPropsDelay = useSpring({
+  const titleProps = useSpring({
+    config: config.slow,
+    from: { opacity: 0, transform: `translate3d(0, -30px, 0)` },
+    to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
+  })
+
+  const infoProps = useSpring({
     config: config.slow,
     delay: 250,
-    from: { opacity: 0, transform: `translate3d(0, 30px, 0)` },
-    to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
+    from: { opacity: 0 },
+    to: { opacity: 1 },
   })
 
   const backButtonProps = useSpring({
@@ -109,16 +115,16 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
                   <img className="logo" src={logo} alt={siteTitle} />
                 </Link>
               </BackButtonStyles>
-              <TitleStyles style={fadeUpProps}>{title}</TitleStyles>
+              <TitleStyles style={titleProps}>{title}</TitleStyles>
               {publishedAt && (
-                <InfoStyles style={fadeUpPropsDelay}>
+                <InfoStyles style={infoProps}>
                   {differenceInDays(new Date(publishedAt), new Date()) > 3
                     ? distanceInWords(new Date(publishedAt), new Date())
                     : format(new Date(publishedAt), "MMMM Do YYYY")}
                 </InfoStyles>
               )}
               {count && (
-                <InfoStyles style={fadeUpPropsDelay}>
+                <InfoStyles style={infoProps}>
                   {count} Projects in {title}
                 </InfoStyles>
               )}
