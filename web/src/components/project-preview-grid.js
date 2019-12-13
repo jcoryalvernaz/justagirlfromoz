@@ -14,7 +14,7 @@ const GridStyles = styled(animated.div)`
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-auto-rows: 100px;
-    grid-gap: 2em;
+    grid-gap: 2rem;
   }
   .browseMoreNav {
     font-size: var(--font-small-size);
@@ -35,7 +35,7 @@ const GridStyles = styled(animated.div)`
   }
 `
 
-function ProjectPreviewGrid(props) {
+function ProjectPreviewGrid({ projects, browseMoreHref }) {
   const fadeUpProps = useSpring({
     config: config.slow,
     delay: 500,
@@ -46,23 +46,23 @@ function ProjectPreviewGrid(props) {
   return (
     <GridStyles style={fadeUpProps}>
       <ul className="grid">
-        {props.nodes &&
-          props.nodes.map(node => (
+        {projects &&
+          projects.map(project => (
             <li
               style={{
                 gridRowEnd: `span ${Math.floor(
-                  node.mainImage.asset.metadata.dimensions.height / 1000
+                  project.mainImage.asset.metadata.dimensions.height / 1000
                 )}`,
               }}
-              key={node.id}
+              key={project.id}
             >
-              <ProjectPreview {...node} />
+              <ProjectPreview project={project} />
             </li>
           ))}
       </ul>
-      {props.browseMoreHref && (
+      {browseMoreHref && (
         <div className="browseMoreNav">
-          <Link to={props.browseMoreHref}>Browse more</Link>
+          <Link to={browseMoreHref}>Browse more</Link>
         </div>
       )}
     </GridStyles>

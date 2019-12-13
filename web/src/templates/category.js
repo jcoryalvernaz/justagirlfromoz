@@ -75,7 +75,7 @@ export const query = graphql`
 const CategoryTemplate = props => {
   const { data, errors, pageContext } = props
 
-  const projectNodes = (data || {}).projects
+  const projects = (data || {}).projects
     ? mapEdgesToNodes(data.projects)
         .filter(filterOutDocsWithoutSlugs)
         .filter(filterOutDocsPublishedInTheFuture)
@@ -84,7 +84,7 @@ const CategoryTemplate = props => {
   const { category } = pageContext
 
   return (
-    <Layout headerTitle={category.title} projectsCount={projectNodes.length}>
+    <Layout headerTitle={category.title} projectsCount={projects.length}>
       {errors && <SEO title="GraphQL Error" />}
       {category && <SEO title={category.title || "Untitled"} />}
 
@@ -93,11 +93,7 @@ const CategoryTemplate = props => {
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      <Container>
-        {projectNodes && (
-          <ProjectPreviewGrid title={`${category.title} projects`} nodes={projectNodes} />
-        )}
-      </Container>
+      <Container>{projects && <ProjectPreviewGrid projects={projects} />}</Container>
     </Layout>
   )
 }

@@ -10,6 +10,7 @@ import PhotosContainer from "./photos-container"
 import BlockContent from "./block-content"
 import RoleList from "./role-list"
 import Photo from "./photo"
+import ProjectPagination from "./project-pagination"
 
 const ProjectStyles = styled(animated.article)`
   margin: -4rem 0 4rem;
@@ -82,29 +83,9 @@ const ProjectStyles = styled(animated.article)`
     line-height: inherit;
     margin: 0.5rem 0 0;
   }
-  .relatedProjects {
-    border-top: 1px solid var(--color-gray);
-    margin: 2rem 0 3rem;
-    ul {
-      list-style: none;
-      margin: 0.75rem 0;
-      padding: 0;
-    }
-    a {
-      display: inline-block;
-      color: inherit;
-      text-decoration: none;
-      padding: 0.25rem 0;
-    }
-  }
-  .relatedProjectsHeadline {
-    font-size: inherit;
-    line-height: inherit;
-    margin: 0.5rem 0 0;
-  }
 `
 
-const Project = props => {
+const Project = ({ _rawBody, categories, mainImage, members, photos, prev, next }) => {
   const [state, setState] = useState({
     overlayImageFluid: {},
     overlayImageAlt: "",
@@ -121,8 +102,6 @@ const Project = props => {
     from: { opacity: 0, transform: `translate3d(0, 50px, 0)` },
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
-
-  const { _rawBody, categories, mainImage, members, photos, relatedProjects } = props
 
   const color =
     mainImage.asset.metadata.palette.vibrant !== null
@@ -175,22 +154,6 @@ const Project = props => {
                 </ul>
               </div>
             )}
-            {relatedProjects && relatedProjects.length > 0 && (
-              <div className="relatedProjects">
-                <h3 className="relatedProjectsHeadline">Related projects</h3>
-                <ul>
-                  {relatedProjects.map(project => (
-                    <li key={`related_${project._id}`}>
-                      {project.slug ? (
-                        <Link to={`/project/${project.slug.current}`}>{project.title}</Link>
-                      ) : (
-                        <span>{project.title}</span>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
           </aside>
         </div>
       </Container>
@@ -201,6 +164,7 @@ const Project = props => {
           ))}
         </PhotosContainer>
       )}
+      <ProjectPagination prev={prev} next={next} />
     </ProjectStyles>
   )
 }

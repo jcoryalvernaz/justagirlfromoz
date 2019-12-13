@@ -25,24 +25,30 @@ export const query = graphql`
         slug {
           current
         }
+        mainImage {
+          asset {
+            _id
+            fluid(maxWidth: 800) {
+              ...GatsbySanityImageFluid
+            }
+            metadata {
+              dimensions {
+                height
+              }
+              palette {
+                dominant {
+                  background
+                }
+                vibrant {
+                  background
+                }
+              }
+            }
+          }
+          alt
+        }
       }
       mainImage {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
         asset {
           _id
           fluid(maxWidth: 800) {
@@ -62,22 +68,6 @@ export const query = graphql`
         alt
       }
       photos {
-        crop {
-          _key
-          _type
-          top
-          bottom
-          left
-          right
-        }
-        hotspot {
-          _key
-          _type
-          x
-          y
-          height
-          width
-        }
         asset {
           _id
           fluid(maxWidth: 800) {
@@ -136,8 +126,9 @@ export const query = graphql`
 `
 
 const ProjectTemplate = props => {
-  const { data, errors } = props
+  const { data, errors, pageContext } = props
   const project = data && data.project
+  const { prev, next } = pageContext
   return (
     <Layout headerTitle={project.title} headerDate={project.publishedAt}>
       {errors && <SEO title="GraphQL Error" />}
@@ -150,13 +141,12 @@ const ProjectTemplate = props => {
           isProject={true}
         />
       )}
-
       {errors && (
         <Container>
           <GraphQLErrorList errors={errors} />
         </Container>
       )}
-      {project && <Project {...project} />}
+      {project && <Project {...project} prev={prev} next={next} />}
     </Layout>
   )
 }
