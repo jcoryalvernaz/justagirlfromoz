@@ -80,7 +80,7 @@ const InfoStyles = styled(animated.div)`
 const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
   const fadeUpProps = useSpring({
     config: config.slow,
-    from: { opacity: 0, transform: `translate3d(0, 30px, 0)` },
+    from: { opacity: 0, transform: `translate3d(0, -30px, 0)` },
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
 

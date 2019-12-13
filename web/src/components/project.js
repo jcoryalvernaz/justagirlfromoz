@@ -28,7 +28,7 @@ const ProjectStyles = styled(animated.article)`
     padding: 1.5rem;
   }
   .overlay-inner {
-    background-color: var(--color-dark-gray);
+    background-color: var(--color-black);
     width: 100%;
     max-width: 960px;
     padding: 1vmin;

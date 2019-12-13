@@ -4,7 +4,7 @@ import styled from "styled-components"
 import "../styles/custom-properties.css"
 
 const PhotosContainerStyles = styled.div`
-  padding: 1.5em;
+  padding: 2rem;
   overflow: hidden;
   display: grid;
   justify-self: center;
