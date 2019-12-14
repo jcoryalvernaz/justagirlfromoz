@@ -53,7 +53,9 @@ const Footer = () => {
     <FooterStyles>
       <div className="gradient">
         <div className="footerWrapper">
-          <div className="siteInfo">© {new Date().getFullYear()}, Just a Girl from Oz</div>
+          <div className="siteInfo">
+            © {new Date().getFullYear()}, Just a Girl from Oz Photography
+          </div>
           <div className="createdInfo">
             Made with <img className="heart" src={heart} alt="love" /> in Reno
           </div>
