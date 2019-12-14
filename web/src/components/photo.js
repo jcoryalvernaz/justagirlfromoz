@@ -4,8 +4,6 @@ import hexToRgba from "hex-to-rgba"
 import styled from "styled-components"
 import { useInView } from "react-intersection-observer"
 
-import OverlayStyles from "../styles/OverlayStyles"
-
 const PhotoStyles = styled.div`
   display: grid;
   grid-column: 1 / -1;
