@@ -10,7 +10,7 @@ const PhotosContainerStyles = styled.div`
   justify-self: center;
   width: 100%;
   grid-template-columns: 1fr;
-  margin-bottom: 4rem;
+  padding-bottom: 20rem;
 `
 
 const PhotosContainer = ({ children }) => {
