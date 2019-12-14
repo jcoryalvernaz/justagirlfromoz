@@ -2,9 +2,13 @@ import React from "react"
 import styled from "styled-components"
 
 import heart from "../images/heart.svg"
+import camera from "../images/pattern.svg"
 
 const FooterStyles = styled.footer`
   border-top: 1px solid var(--color-gray);
+  background: url(${camera});
+  position: relative;
+  display: grid;
   .footerWrapper {
     max-width: 960px;
     padding: 4.5em 1.5em 1.5em;
@@ -28,15 +32,31 @@ const FooterStyles = styled.footer`
     margin-right: 0.2rem;
     height: 1rem;
   }
+  .gradient {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    background: linear-gradient(
+      360deg,
+      rgba(0, 0, 0, 0) 34.99%,
+      rgba(0, 0, 0, 0) 35%,
+      rgba(0, 0, 0, 0.35) 100%
+    );
+  }
 `
 
 const Footer = () => {
   return (
     <FooterStyles>
-      <div className="footerWrapper">
-        <div className="siteInfo">© {new Date().getFullYear()}, Just a Girl from Oz</div>
-        <div className="createdInfo">
-          Made with <img className="heart" src={heart} alt="love" /> in Reno
+      <div className="gradient">
+        <div className="footerWrapper">
+          <div className="siteInfo">© {new Date().getFullYear()}, Just a Girl from Oz</div>
+          <div className="createdInfo">
+            Made with <img className="heart" src={heart} alt="love" /> in Reno
+          </div>
         </div>
       </div>
     </FooterStyles>
