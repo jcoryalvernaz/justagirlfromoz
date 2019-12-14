@@ -3,6 +3,7 @@ import styled from "styled-components"
 
 import heart from "../images/heart.svg"
 import camera from "../images/pattern.svg"
+import SocialMediaList from "./social-media-list"
 
 const FooterStyles = styled.footer`
   border-top: 1px solid var(--color-gray);
@@ -10,6 +11,7 @@ const FooterStyles = styled.footer`
   position: relative;
   display: grid;
   .footerWrapper {
+    display: grid;
     max-width: 960px;
     padding: 4.5em 1.5em 1.5em;
     margin: 0 auto;
@@ -53,6 +55,7 @@ const Footer = () => {
     <FooterStyles>
       <div className="gradient">
         <div className="footerWrapper">
+      <SocialMediaList />
           <div className="siteInfo">
             © {new Date().getFullYear()}, Just a Girl from Oz Photography
           </div>

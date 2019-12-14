@@ -6,13 +6,16 @@ import { config, animated, useSpring } from "react-spring"
 const SocialMediaStyles = styled(animated.div)`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(auto-fit, 3rem);
+  grid-template-columns: repeat(auto-fit, 5rem);
   grid-auto-flow: column;
   justify-self: center;
   justify-items: center;
-  margin-bottom: 4rem;
+  margin: 3rem 0 4rem;
   .icon {
-    width: 3rem;
+    width: 5rem;
+    &:hover, &:focus {
+      filter: brightness(75%);
+    }
   }
 `
 
@@ -41,7 +44,7 @@ const SocialMediaList = () => {
 
   const fadeUpProps = useSpring({
     config: config.slow,
-    delay: 250,
+    delay: 300,
     from: { opacity: 0, transform: `translate3d(0, 30px, 0)` },
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })

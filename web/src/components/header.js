@@ -8,7 +8,7 @@ import PropTypes from "prop-types"
 import SocialMediaList from "./social-media-list"
 import LeftArrow from "../assets/left-arrow"
 import camera from "../images/pattern.svg"
-import logo from "../images/logo.svg"
+import logo from "../images/justagirlfromoz_logo.svg"
 
 const HeaderStyles = styled.header`
   background: url(${camera});
@@ -38,7 +38,7 @@ const HeaderStyles = styled.header`
   }
   .logo {
     margin: 1rem 0;
-    width: 200px;
+    width: 250px;
   }
 `
 
@@ -56,7 +56,7 @@ const BackButtonStyles = styled(animated.div)`
     transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
   .logo {
-    width: 100px;
+    width: 150px;
   }
   a {
     display: grid;
@@ -80,7 +80,7 @@ const InfoStyles = styled(animated.div)`
 const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
   const fadeUpProps = useSpring({
     config: config.slow,
-    from: { opacity: 0, transform: `translate3d(0, -30px, 0)` },
+    from: { opacity: 0, transform: `translate3d(0, 30px, 0)` },
     to: { opacity: 1, transform: `translate3d(0, 0, 0)` },
   })
 

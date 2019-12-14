@@ -3,7 +3,7 @@ import Header from "./header"
 import Footer from "./footer"
 import styled from "styled-components"
 
-import "../styles/layout.css"
+import GlobalStyles from "../styles/GlobalStyles"
 
 const MainStyles = styled.main`
   display: grid;
@@ -17,6 +17,7 @@ const Layout = ({ children, siteTitle, headerTitle, headerDate, projectsCount })
   const isHomePage = typeof window !== "undefined" ? window.location.pathname === "/" : null
   return (
     <>
+    <GlobalStyles />
       <Header
         isHomePage={isHomePage}
         siteTitle={siteTitle}

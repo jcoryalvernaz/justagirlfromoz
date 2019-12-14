@@ -1,9 +1,12 @@
-@import "./custom-properties.css";
+import { createGlobalStyle } from "styled-components"
 
+import "./custom-properties.css"
+
+const GlobalStyles = createGlobalStyle`
 html {
   box-sizing: border-box;
   font-family: var(--font-family-sans);
-  font-size: var(--font-base-size);
+  font-size: 10px;
   line-height: var(--font-base-line-height);
 }
 *,
@@ -19,6 +22,7 @@ body {
   background: var(--color-black);
   color: var(--color-white);
   margin: 0;
+  font-size: 1.5rem;
 }
 
 html,
@@ -35,3 +39,6 @@ a {
 a:hover {
   color: var(--color-accent);
 }
+`
+
+export default GlobalStyles
