@@ -5,16 +5,12 @@ import styled from "styled-components"
 import { animated, useSpring, config } from "react-spring"
 
 const GridStyles = styled(animated.div)`
-  z-index: 20;
   margin: -4rem 0 4rem;
-  .grid {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    grid-auto-rows: 100px;
-    grid-gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-gap: 2rem;
+  @media (max-width: 430px) {
+    grid-template-columns: 1fr;
   }
   .browseMoreNav {
     font-size: var(--font-small-size);
@@ -45,21 +41,10 @@ function ProjectPreviewGrid({ projects, browseMoreHref }) {
 
   return (
     <GridStyles style={fadeUpProps}>
-      <ul className="grid">
-        {projects &&
-          projects.map(project => (
-            <li
-              style={{
-                gridRowEnd: `span ${Math.floor(
-                  project.mainImage.asset.metadata.dimensions.height / 1000
-                )}`,
-              }}
-              key={project.id}
-            >
-              <ProjectPreview project={project} />
-            </li>
-          ))}
-      </ul>
+      {projects &&
+        projects.map(project => (
+          <ProjectPreview key={project.id} project={project} inGrid={true} />
+        ))}
       {browseMoreHref && (
         <div className="browseMoreNav">
           <Link to={browseMoreHref}>Browse more</Link>

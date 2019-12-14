@@ -10,10 +10,22 @@ const PaginationStyles = styled.div`
   .paginationGrid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-auto-rows: 300px;
     grid-gap: 2rem;
     @media (max-width: 700px) {
       grid-template-columns: 1fr;
+    }
+    a {
+      position: relative;
+    }
+    [data-name="image-overlay"] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .gatsby-image-wrapper > div {
+      padding-bottom: 56% !important;
     }
   }
 `

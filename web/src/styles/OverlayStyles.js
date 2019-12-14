@@ -6,7 +6,7 @@ const OverlayStyles = styled.div`
   grid-template-columns: 1fr;
   grid-column: 1 / -1;
   grid-row: 1 / -1;
-  justify-items: center;
+  justify-content: center;
   text-align: center;
   align-items: center;
   opacity: 0;
@@ -14,8 +14,6 @@ const OverlayStyles = styled.div`
   color: var(--color-white);
   background-color: ${props => props.overlay};
   position: absolute;
-  width: 100%;
-  height: 100%;
   top: 0;
   left: 0;
   bottom: 0;
