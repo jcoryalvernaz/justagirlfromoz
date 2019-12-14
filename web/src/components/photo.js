@@ -24,25 +24,6 @@ const PhotoStyles = styled.div`
     justify-self: end;
     padding-top: 4vmin;
   }
-  .image-container {
-    display: grid;
-    .view {
-      outline: none;
-      cursor: pointer;
-      background: none;
-      border: 0;
-      width: 100%;
-      height: 100%;
-      color: var(--color-white);
-      padding: 1vmin;
-      text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 12px;
-    }
-    :hover {
-      [data-name="image-overlay"] {
-        opacity: 1;
-      }
-    }
-  }
 `
 
 const Photo = ({ photo, index, selectImage }) => {
@@ -69,14 +50,7 @@ const Photo = ({ photo, index, selectImage }) => {
           : {}
       }
     >
-      <div className="image-container">
-        <OverlayStyles overlay={overlay} data-name="image-overlay">
-          <button className="view" onClick={() => selectImage(photo.asset.fluid, photo.alt)}>
-            View
-          </button>
-        </OverlayStyles>
         <Img fluid={photo.asset.fluid} alt={photo.alt} />
-      </div>
       <span className="handwriting">{photo.caption}</span>
     </PhotoStyles>
   )

@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
 import { Link } from "gatsby"
@@ -15,31 +15,6 @@ import ProjectPagination from "./project-pagination"
 const ProjectStyles = styled(animated.article)`
   margin: -4rem 0 4rem;
   display: grid;
-  .overlay {
-    background: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2;
-    display: ${props => (props.isVisible ? "grid" : "none")};
-    align-items: center;
-    justify-items: center;
-    padding: 1.5rem;
-  }
-  .overlay-inner {
-    background-color: var(--color-black);
-    width: 100%;
-    max-width: 960px;
-    padding: 1vmin;
-  }
-  .close {
-    cursor: pointer;
-    background: none;
-    color: var(--color-white);
-    border: 0;
-  }
   .mainImage {
     position: relative;
     display: grid;
@@ -86,15 +61,6 @@ const ProjectStyles = styled(animated.article)`
 `
 
 const Project = ({ _rawBody, categories, mainImage, members, photos, prev, next }) => {
-  const [state, setState] = useState({
-    overlayImageFluid: {},
-    overlayImageAlt: "",
-    isVisible: false,
-  })
-
-  const selectImage = (fluid, alt) => {
-    setState({ overlayImageFluid: fluid, overlayImageAlt: alt, isVisible: true })
-  }
 
   const fadeUpProps = useSpring({
     config: config.slow,
@@ -111,17 +77,7 @@ const Project = ({ _rawBody, categories, mainImage, members, photos, prev, next 
   const px = [`64px`, `32px`, `16px`, `8px`, `4px`]
   const shadowArray = px.map(val => `${shadow} 0px ${val} ${val} 0px`)
   return (
-    <ProjectStyles isVisible={state.isVisible} style={fadeUpProps}>
-      {state.isVisible && (
-        <div className="overlay">
-          <div className="overlay-inner">
-            <button className="close" onClick={() => setState({ isVisible: false })}>
-              X Close
-            </button>
-            <Img fluid={state.overlayImageFluid} alt={state.overlayImageAlt} />
-          </div>
-        </div>
-      )}
+    <ProjectStyles style={fadeUpProps}>
       <Container>
         {mainImage && mainImage.asset && (
           <div className="mainImage">
@@ -160,7 +116,7 @@ const Project = ({ _rawBody, categories, mainImage, members, photos, prev, next 
       {photos && photos.length > 0 && (
         <PhotosContainer>
           {photos.map((photo, i) => (
-            <Photo key={photo.asset._id} photo={photo} index={i} selectImage={selectImage} />
+            <Photo key={photo.asset._id} photo={photo} index={i} />
           ))}
         </PhotosContainer>
       )}
