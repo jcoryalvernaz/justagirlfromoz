@@ -10,7 +10,7 @@ const PhotoStyles = styled.div`
   margin-top: ${props => props.margin};
   max-width: 500px;
   background-color: var(--color-white);
-  padding: 1vmin 1vmin 8vmin 1vmin;
+  padding: 1vmin 1vmin 4vmin 1vmin;
   transform: rotate(${props => props.offset * 3}deg)
     translate3d(${props => props.offset * -100}%, 300px, 0) scale(1.6);
   transition: all 1.2s cubic-bezier(0.33, 0, 0.66, 0.33);
@@ -18,9 +18,12 @@ const PhotoStyles = styled.div`
   width: 100%;
   box-shadow: ${props => props.offset * 30}vmin -10vmin 5px rgba(0, 0, 0, 0.7);
   .handwriting {
+    font-family: 'La Belle Aurore', cursive;
+    font-size: 3rem;
     color: var(--color-black);
     justify-self: end;
-    padding-top: 4vmin;
+    margin-right: 1rem;
+    padding-top: 2vmin;
   }
 `
 

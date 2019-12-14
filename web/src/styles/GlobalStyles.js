@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import "./custom-properties.css"
 
 const GlobalStyles = createGlobalStyle`
+@import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore&display=swap");
 html {
   box-sizing: border-box;
   font-family: var(--font-family-sans);
