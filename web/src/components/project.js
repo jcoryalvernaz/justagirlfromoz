@@ -13,7 +13,7 @@ import Photo from "./photo"
 import ProjectPagination from "./project-pagination"
 
 const ProjectStyles = styled(animated.article)`
-  margin: -4rem 0 4rem;
+  margin: -8rem 0 4rem;
   display: grid;
   .mainImage {
     position: relative;

@@ -74,7 +74,7 @@ const TitleStyles = styled(animated.h1)`
 `
 const InfoStyles = styled(animated.div)`
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 8rem;
 `
 
 const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {

@@ -10,9 +10,9 @@ const SocialMediaStyles = styled(animated.div)`
   grid-auto-flow: column;
   justify-self: center;
   justify-items: center;
-  margin: 3rem 0 4rem;
+  margin: 3rem 0 8rem;
   .icon {
-    width: 5rem;
+    width: 6rem;
     &:hover, &:focus {
       filter: brightness(75%);
     }

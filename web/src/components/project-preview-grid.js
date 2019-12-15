@@ -5,7 +5,7 @@ import styled from "styled-components"
 import { animated, useSpring, config } from "react-spring"
 
 const GridStyles = styled(animated.div)`
-  margin: -4rem 0 4rem;
+  margin: -8rem 0 4rem;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   grid-gap: 2rem;

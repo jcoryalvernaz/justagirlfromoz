@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import "./custom-properties.css"
 
 const GlobalStyles = createGlobalStyle`
-@import url("https://fonts.googleapis.com/css?family=La+Belle+Aurore&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise&display=swap");
 html {
   box-sizing: border-box;
   font-family: var(--font-family-sans);
@@ -38,7 +38,7 @@ a {
   text-decoration: none;
 }
 a:hover {
-  color: var(--color-accent);
+  text-decoration: underline;
 }
 `
 
