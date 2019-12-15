@@ -133,7 +133,7 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
           {isHomePage && (
             <>
               <BrandingStyles style={fadeUpProps} className="logo" src={logo} alt={siteTitle} />
-              <SocialMediaList />
+              <SocialMediaList inHeader/>
             </>
           )}
         </div>

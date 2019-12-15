@@ -10,7 +10,7 @@ const SocialMediaStyles = styled(animated.div)`
   grid-auto-flow: column;
   justify-self: center;
   justify-items: center;
-  margin: 3rem 0 8rem;
+  margin: 3rem 0 ${props => props.marginBottom};
   .icon {
     width: 6rem;
     &:hover, &:focus {
@@ -19,7 +19,7 @@ const SocialMediaStyles = styled(animated.div)`
   }
 `
 
-const SocialMediaList = () => {
+const SocialMediaList = ({inHeader}) => {
   const data = useStaticQuery(
     graphql`
       query {
@@ -50,7 +50,7 @@ const SocialMediaList = () => {
   })
 
   return (
-    <SocialMediaStyles style={fadeUpProps}>
+    <SocialMediaStyles style={fadeUpProps} marginBottom={inHeader ? `8rem` : `4rem`}>
       {socialMedia.map((social, i) => (
         <a href={social.url} key={i}>
           <img className="icon" src={social.image.asset.fixed.src} alt={social.platform} />
