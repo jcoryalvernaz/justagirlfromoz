@@ -5,7 +5,7 @@ import "../styles/custom-properties.css"
 
 const ContainerStyles = styled.div`
   max-width: 1400px;
-  padding: 2rem;
+  padding: 1rem;
   justify-self: center;
   width: 100%;
   display: grid;
