@@ -13,21 +13,11 @@ const GridStyles = styled(animated.div)`
     grid-template-columns: 1fr;
   }
   .browseMoreNav {
+    grid-column: 1 / -1;
     font-size: var(--font-small-size);
     line-height: var(--font-small-line-height);
     margin-top: 1rem;
     text-align: right;
-    a {
-      display: inline-block;
-      padding: 0.5rem 0;
-      color: inherit;
-      text-decoration: none;
-      @media (hover: hover) {
-        &:hover {
-          color: var(--color-accent);
-        }
-      }
-    }
   }
 `
 

@@ -26,6 +26,8 @@ const FooterStyles = styled.footer`
   }
   .createdInfo {
     text-align: center;
+    font-size: var(--font-small-size);
+    line-height: var(--font-small-line-height);
     margin: 1rem;
   }
   .heart {
@@ -55,7 +57,7 @@ const Footer = () => {
     <FooterStyles>
       <div className="gradient">
         <div className="footerWrapper">
-      <SocialMediaList />
+          <SocialMediaList />
           <div className="siteInfo">
             © {new Date().getFullYear()}, Just a Girl from Oz Photography
           </div>

@@ -33,7 +33,7 @@ const PaginationStyles = styled.div`
 const ProjectPagination = ({ prev, next }) => (
   <Container>
     <PaginationStyles>
-      <h3>More Projects</h3>
+      <h2>More Projects</h2>
       <div className="paginationGrid">
         {prev && <ProjectPreview project={prev} />}
         {next && <ProjectPreview project={next} />}

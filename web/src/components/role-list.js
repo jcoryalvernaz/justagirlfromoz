@@ -7,11 +7,6 @@ import { ucfirst } from "../lib/string-utils"
 const RoleListStyles = styled.div`
   margin: 2rem 0 3rem;
   border-top: 1px solid var(--color-gray);
-  .headline {
-    font-size: inherit;
-    line-height: inherit;
-    margin: 0.5rem 0 0;
-  }
   .list {
     list-style: none;
     margin: 0;
@@ -47,7 +42,7 @@ const RoleListStyles = styled.div`
 function RoleList({ items, title }) {
   return (
     <RoleListStyles>
-      <h2 className="headline">{title}</h2>
+      <h2>{title}</h2>
       <ul className="list">
         {items.map(item => (
           <li key={item._key} className="listItem">

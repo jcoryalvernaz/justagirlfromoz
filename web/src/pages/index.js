@@ -105,7 +105,7 @@ const IndexPage = props => {
       <Container>
         <h1 hidden>Welcome to {site.title}</h1>
         {projects && <ProjectPreviewGrid projects={projects} browseMoreHref="/archive/" />}
-        <h1>About Me</h1>
+        <h2>About Me</h2>
         <p>{site.about}</p>
       </Container>
     </Layout>

@@ -72,7 +72,7 @@ const TitleStyles = styled(animated.h1)`
   text-align: center;
   margin: 1rem 0;
 `
-const InfoStyles = styled(animated.div)`
+const InfoStyles = styled(animated.h4)`
   text-align: center;
   margin-bottom: 8rem;
 `
@@ -133,7 +133,7 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
           {isHomePage && (
             <>
               <BrandingStyles style={fadeUpProps} className="logo" src={logo} alt={siteTitle} />
-              <SocialMediaList inHeader/>
+              <SocialMediaList inHeader />
             </>
           )}
         </div>

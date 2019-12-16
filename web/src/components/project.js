@@ -31,16 +31,6 @@ const ProjectStyles = styled(animated.article)`
       grid-template-columns: 3fr 1fr;
     }
   }
-  .mainContent {
-    a {
-      color: var(--color-accent);
-      @media (hover: hover) {
-        :hover {
-          color: inherit;
-        }
-      }
-    }
-  }
   .categories {
     border-top: 1px solid var(--color-gray);
     margin: 2rem 0 3rem;
@@ -50,18 +40,14 @@ const ProjectStyles = styled(animated.article)`
       padding: 0;
     }
     ul li {
+      font-size: var(--font-small-size);
+      line-height: var(--font-small-line-height);
       padding: 0.25rem 0;
     }
-  }
-  .categoriesHeadline {
-    font-size: inherit;
-    line-height: inherit;
-    margin: 0.5rem 0 0;
   }
 `
 
 const Project = ({ _rawBody, categories, mainImage, members, photos, prev, next }) => {
-
   const fadeUpProps = useSpring({
     config: config.slow,
     delay: 500,
@@ -96,7 +82,7 @@ const Project = ({ _rawBody, categories, mainImage, members, photos, prev, next 
             {members && members.length > 0 && <RoleList items={members} title="Project members" />}
             {categories && categories.length > 0 && (
               <div className="categories">
-                <h3 className="categoriesHeadline">Categories</h3>
+                <h2>Categories</h2>
                 <ul>
                   {categories.map(category => (
                     <li key={category._id}>
