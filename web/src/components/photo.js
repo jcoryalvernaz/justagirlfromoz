@@ -17,16 +17,14 @@ const PhotoStyles = styled.div`
   width: 100%;
   box-shadow: ${props => props.offset * 30}vmin -10vmin 5px rgba(0, 0, 0, 0.7);
   .handwriting {
-    font-family: 'Waiting for the Sunrise', cursive;
-    font-size: 3rem;
+    font-family: "Waiting for the Sunrise", cursive;
     color: var(--color-black);
     justify-self: ${props => props.textJustify};
-    margin-right: 1rem;
-    padding-top: 2vmin;
+    margin: 1vmin;
   }
 `
 
-const Photo = ({ photo, index, selectImage }) => {
+const Photo = ({ photo, index }) => {
   if (!photo.asset) {
     return null
   }
@@ -47,8 +45,8 @@ const Photo = ({ photo, index, selectImage }) => {
           : {}
       }
     >
-        <Img fluid={photo.asset.fluid} alt={photo.alt} />
-      <span className="handwriting">{photo.caption}</span>
+      <Img fluid={photo.asset.fluid} alt={photo.alt} />
+      <h3 className="handwriting">{photo.caption}</h3>
     </PhotoStyles>
   )
 }

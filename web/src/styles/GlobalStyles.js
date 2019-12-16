@@ -55,7 +55,7 @@ p {
   }
 }
 h1 {
-  font-weight: 900;
+  font-weight: 700;
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   margin: 1rem 0 2rem;
@@ -69,7 +69,7 @@ h1 {
   }
 }
 h2 {
-  font-weight: 900;
+  font-weight: 700;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
   margin: 1.5rem 0 0.5rem;
@@ -84,9 +84,13 @@ h2 {
 }
 h3 {
   font-weight: 900;
-  font-size: var(--font-large-size);
-  line-height: var(--font-large-line-height);
   margin: 1rem 0 0.5rem;
+  font-size: var(--font-micro-size);
+    line-height: var(--font-micro-line-height);
+  @media(min-width: 350px) {
+    font-size: var(--font-small-size);
+    line-height: var(--font-small-line-height);
+  }
   @media(min-width: 450px) {
     font-size: var(--font-large-size);
     line-height: var(--font-large-line-height);
