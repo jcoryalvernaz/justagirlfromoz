@@ -61,7 +61,7 @@ const ArchivePage = props => {
   const projects =
     data && data.projects && mapEdgesToNodes(data.projects).filter(filterOutDocsWithoutSlugs)
   return (
-    <Layout>
+    <Layout headerTitle="Archive" projectsCount={projects.length}>
       <SEO title="Archive" />
       <Container>
         {projects && projects.length > 0 && <ProjectPreviewGrid projects={projects} />}
