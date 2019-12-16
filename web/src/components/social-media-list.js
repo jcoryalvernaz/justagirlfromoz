@@ -9,17 +9,19 @@ const SocialMediaStyles = styled(animated.div)`
   grid-template-columns: repeat(auto-fit, 5rem);
   grid-auto-flow: column;
   justify-self: center;
+  justify-content: center;
   justify-items: center;
   margin: 3rem 0 ${props => props.marginBottom};
   .icon {
     width: 6rem;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       filter: brightness(75%);
     }
   }
 `
 
-const SocialMediaList = ({inHeader}) => {
+const SocialMediaList = ({ inHeader }) => {
   const data = useStaticQuery(
     graphql`
       query {
