@@ -34,7 +34,7 @@ const FooterStyles = styled.footer`
     margin-bottom: -0.2rem;
     margin-left: 0.2rem;
     margin-right: 0.2rem;
-    height: 1rem;
+    height: 1.5rem;
   }
   .gradient {
     grid-column: 1 / -1;
