@@ -11,7 +11,7 @@ const PhotoStyles = styled.div`
   background-color: var(--color-white);
   padding: 1vmin 1vmin 4vmin 1vmin;
   transform: rotate(${props => props.offset * 10}deg)
-    translate3d(${props => props.offset * -100}%, 300px, 0) scale(1.6);
+    translate3d(${props => props.offset * -100}%, 100%, 0) scale(1.6);
   transition: all 1.2s cubic-bezier(0.33, 0, 0.66, 0.33);
   justify-self: center;
   width: 100%;
