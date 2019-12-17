@@ -37,7 +37,7 @@ function ProjectPreviewGrid({ projects, browseMoreHref }) {
         ))}
       {browseMoreHref && (
         <div className="browseMoreNav">
-          <Link to={browseMoreHref}>Browse more</Link>
+          <Link to={browseMoreHref}>More Projects</Link>
         </div>
       )}
     </GridStyles>

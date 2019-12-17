@@ -20,7 +20,7 @@ export const query = graphql`
       about
     }
     projects: allSanityProject(
-      limit: 9
+      limit: 6
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
     ) {

@@ -10,7 +10,6 @@ import { mapEdgesToNodes, filterOutDocsWithoutSlugs } from "../lib/helpers"
 export const query = graphql`
   query ArchivePageQuery {
     projects: allSanityProject(
-      limit: 12
       sort: { fields: [publishedAt], order: DESC }
       filter: { slug: { current: { ne: null } }, publishedAt: { ne: null } }
     ) {
