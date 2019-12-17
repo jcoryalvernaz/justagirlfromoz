@@ -17,7 +17,6 @@ const PhotoStyles = styled.div`
   width: 100%;
   box-shadow: ${props => props.offset * 30}vmin -10vmin 5px rgba(0, 0, 0, 0.7);
   .handwriting {
-    font-family: "Waiting for the Sunrise", cursive;
     color: var(--color-black);
     justify-self: ${props => props.textJustify};
     margin: 1vmin;

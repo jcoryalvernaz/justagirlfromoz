@@ -3,10 +3,10 @@ import { createGlobalStyle } from "styled-components"
 import "./custom-properties.css"
 
 const GlobalStyles = createGlobalStyle`
-@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise|Dancing+Script:600|Open+Sans&display=swap");
 html {
   box-sizing: border-box;
-  font-family: var(--font-family-sans);
+  font-family: "Open Sans", sans-serif;
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
 }
@@ -55,7 +55,8 @@ p {
   }
 }
 h1 {
-  font-weight: 700;
+  font-weight: 600;
+  font-family: "Dancing Script", cursive;
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   margin: 1rem 0 2rem;
@@ -69,10 +70,10 @@ h1 {
   }
 }
 h2 {
-  font-weight: 700;
+  font-family: "Dancing Script", cursive;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
-  margin: 1.5rem 0 0.5rem;
+  margin: 1.5rem 0 2rem;
   @media(min-width: 450px) {
     font-size: var(--font-title3-size);
     line-height: var(--font-title3-line-height);
@@ -84,6 +85,7 @@ h2 {
 }
 h3 {
   font-weight: 900;
+  font-family: "Waiting for the Sunrise", cursive;
   margin: 1rem 0 0.5rem;
   font-size: var(--font-micro-size);
     line-height: var(--font-micro-line-height);
@@ -103,6 +105,7 @@ h3 {
 h4 {
   font-size: var(--font-small-size);
   line-height: var(--font-small-line-height);
+  font-weight: 400;
   margin: 1rem 0 0.5rem;
   @media(min-width: 450px) {
     font-size: var(--font-small-size);
