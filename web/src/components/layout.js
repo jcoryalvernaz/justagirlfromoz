@@ -17,7 +17,7 @@ const Layout = ({ children, siteTitle, headerTitle, headerDate, projectsCount })
   const isHomePage = typeof window !== "undefined" ? window.location.pathname === "/" : null
   return (
     <>
-    <GlobalStyles />
+      <GlobalStyles />
       <Header
         isHomePage={isHomePage}
         siteTitle={siteTitle}
@@ -26,7 +26,7 @@ const Layout = ({ children, siteTitle, headerTitle, headerDate, projectsCount })
         count={projectsCount}
       />
       <MainStyles>{children}</MainStyles>
-      <Footer />
+      <Footer siteTitle={siteTitle} />
     </>
   )
 }
