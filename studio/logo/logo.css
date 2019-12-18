@@ -1,0 +1,9 @@
+@import "part:@sanity/base/theme/variables-style";
+
+.logo {
+  margin-top: -1rem;
+  height: 3rem;
+  @media (--screen-medium) {
+    margin-top: 0;
+  }
+}

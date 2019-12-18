@@ -1,0 +1,9 @@
+@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise|Dancing+Script:600|Open+Sans&display=swap");
+
+:root {
+  --brand-primary: #1a202c;
+  --brand-primary--inverted: #fff;
+  --brand-secondary: #1d2330;
+  --brand-secondary--inverted: #697a90;
+  --font-family-sans-serif: "Open Sans";
+}
