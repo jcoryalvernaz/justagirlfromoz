@@ -59,12 +59,6 @@ export default {
       name: "body",
       title: "Body",
       type: "projectPortableText"
-    },
-    {
-      name: "relatedProjects",
-      title: "Related projects",
-      type: "array",
-      of: [{ type: "reference", to: { type: "project" } }]
     }
   ],
   preview: {

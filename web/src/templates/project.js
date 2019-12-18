@@ -19,35 +19,6 @@ export const query = graphql`
           current
         }
       }
-      relatedProjects {
-        title
-        _id
-        slug {
-          current
-        }
-        mainImage {
-          asset {
-            _id
-            fluid(maxWidth: 800) {
-              ...GatsbySanityImageFluid
-            }
-            metadata {
-              dimensions {
-                height
-              }
-              palette {
-                dominant {
-                  background
-                }
-                vibrant {
-                  background
-                }
-              }
-            }
-          }
-          alt
-        }
-      }
       mainImage {
         asset {
           _id

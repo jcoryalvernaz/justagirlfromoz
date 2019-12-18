@@ -55,7 +55,7 @@ function RoleList({ items, title }) {
                       .height(100)
                       .fit("crop")
                       .url()}
-                    alt=""
+                    alt={item.person.name}
                   />
                 )}
               </div>
