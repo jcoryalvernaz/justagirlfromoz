@@ -14,10 +14,23 @@ const GridStyles = styled(animated.div)`
   }
   .browseMoreNav {
     grid-column: 1 / -1;
-    font-size: var(--font-small-size);
-    line-height: var(--font-small-line-height);
     margin-top: 1rem;
     text-align: right;
+    font-family: "Dancing Script", cursive;
+    font-size: var(--font-title3-size);
+    line-height: var(--font-title3-line-height);
+    margin: 1.5rem 0 2rem;
+    @media (min-width: 450px) {
+      font-size: var(--font-title3-size);
+      line-height: var(--font-title3-line-height);
+    }
+    @media (min-width: 675px) {
+      font-size: var(--font-title2-size);
+      line-height: var(--font-title2-line-height);
+    }
+    a {
+      text-decoration: none;
+    }
   }
 `
 

@@ -8,18 +8,18 @@
 
   /* Typography */
   --font-base-size: 10px;
-  --font-base-line-height: 1.8rem; /* 18px */
-  --font-micro-size: 1.4rem; /* 10px */
-  --font-micro-line-height: 1.8rem; /* 12px */
-  --font-small-size: 1.6rem; /* 16px */
-  --font-small-line-height: 2.4rem; /* 24px */
-  --font-large-size: 1.8rem; /* 18px */
-  --font-large-line-height: 2.7rem; /* 27px */
+  --font-base-line-height: 1.8rem;
+  --font-micro-size: 1.8rem;
+  --font-micro-line-height: 3.1rem;
+  --font-small-size: 2.1rem;
+  --font-small-line-height: 3.6rem;
+  --font-large-size: 2.8rem;
+  --font-large-line-height: 4.8rem;
 
-  --font-title3-size: 2.1rem; /* 21px */
-  --font-title3-line-height: 3rem; /* 30px */
-  --font-title2-size: 2.4rem; /* 24px */
-  --font-title2-line-height: 3.3rem; /* 33px */
-  --font-title1-size: 4.9rem; /* 49px */
-  --font-title1-line-height: 5.7rem; /* 57px */
+  --font-title3-size: 3.1rem;
+  --font-title3-line-height: 3.7rem;
+  --font-title2-size: 4rem;
+  --font-title2-line-height: 4.8rem;
+  --font-title1-size: 5.9rem;
+  --font-title1-line-height: 7.1rem;
 }

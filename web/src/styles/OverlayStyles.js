@@ -20,7 +20,6 @@ const OverlayStyles = styled.div`
   right: 0;
   h2 {
     padding: 1rem;
-    text-shadow: rgba(0, 0, 0, 0.4) 0px 2px 12px;
   }
 `
 
