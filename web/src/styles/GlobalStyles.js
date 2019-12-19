@@ -3,7 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import "./custom-properties.css"
 
 const GlobalStyles = createGlobalStyle`
-@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise|Petit+Formal+Script|Dancing+Script:600|Open+Sans|Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Waiting+for+the+Sunrise|Allura|Source+Sans+Pro&display=swap");
 html {
   box-sizing: border-box;
   font-family: "Source Sans Pro", sans-serif;
@@ -61,7 +61,7 @@ p {
 }
 h1 {
   /* font-weight: 600; */
-  font-family: "Petit Formal Script", cursive;
+  font-family: "Allura", cursive;
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   font-weight: 400;
@@ -76,7 +76,7 @@ h1 {
   }
 }
 h2 {
-  font-family: "Petit Formal Script", cursive;
+  font-family: "Allura", cursive;
   font-weight: 400;
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
@@ -110,18 +110,18 @@ h3 {
   }
 }
 h4 {
-  font-size: var(--font-small-size);
-  line-height: var(--font-small-line-height);
+  font-size: var(--font-micro-size);
+  line-height: var(--font-micro-line-height);
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 400;
   margin: 1rem 0 0.5rem;
   @media(min-width: 450px) {
-    font-size: var(--font-small-size);
-    line-height: var(--font-small-line-height);
+    font-size: var(--font-micro-size);
+    line-height: var(--font-micro-line-height);
   }
   @media(min-width: 675px) {
-    font-size: var(--font-large-size);
-    line-height: var(--font-large-line-height);
+    font-size: var(--font-small-size);
+    line-height: var(--font-small-line-height);
   }
 }
 `

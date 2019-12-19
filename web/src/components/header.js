@@ -35,16 +35,19 @@ const HeaderStyles = styled.header`
     max-width: 960px;
     display: grid;
     grid-template-columns: 1fr;
+    padding: 1.5rem;
   }
   .logo {
     margin: 1rem 0;
-    width: 250px;
+    width: 150px;
+    @media (min-width: 675px) {
+      width: 250px;
+    }
   }
 `
 
 const BackButtonStyles = styled(animated.div)`
   justify-self: start;
-  padding-left: 1rem;
   &:hover,
   &:focus {
     .arrow {
@@ -56,7 +59,10 @@ const BackButtonStyles = styled(animated.div)`
     transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   }
   .logo {
-    width: 150px;
+    width: 100px;
+    @media (min-width: 675px) {
+      width: 150px;
+    }
   }
   a {
     display: grid;
@@ -70,11 +76,11 @@ const BrandingStyles = styled(animated.img)`
 
 const TitleStyles = styled(animated.h1)`
   text-align: center;
-  margin: 1rem 0;
+  margin: 3rem 0 0;
 `
 const InfoStyles = styled(animated.h4)`
   text-align: center;
-  margin-bottom: 8rem;
+  margin: 0 0 7rem;
 `
 
 const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
@@ -125,7 +131,7 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
               )}
               {count && (
                 <InfoStyles style={infoProps}>
-                  {count} Projects in {title}
+                  Viewing {count} Projects in {title}
                 </InfoStyles>
               )}
             </>
