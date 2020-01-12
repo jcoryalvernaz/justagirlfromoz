@@ -7,11 +7,10 @@ import PropTypes from "prop-types"
 
 import SocialMediaList from "./social-media-list"
 import LeftArrow from "../assets/left-arrow"
-import camera from "../images/pattern.svg"
-import logo from "../images/justagirlfromoz_logo.svg"
+import LogoSmall from "../assets/logo-small"
+import LogoLarge from "../assets/logo-large"
 
 const HeaderStyles = styled.header`
-  background: url(${camera});
   position: relative;
   display: grid;
   .gradient {
@@ -55,8 +54,15 @@ const BackButtonStyles = styled(animated.div)`
     }
   }
   .arrow {
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.2rem;
     align-self: center;
     transition: transform 0.25s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    @media (min-width: 675px) {
+      width: 3rem;
+      height: 3rem;
+    }
   }
   .logo {
     width: 100px;
@@ -70,7 +76,7 @@ const BackButtonStyles = styled(animated.div)`
   }
 `
 
-const BrandingStyles = styled(animated.img)`
+const BrandingStyles = styled(animated.div)`
   justify-self: center;
 `
 
@@ -118,7 +124,7 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
               <BackButtonStyles style={backButtonProps}>
                 <Link to="/">
                   <LeftArrow />
-                  <img className="logo" src={logo} alt={siteTitle} />
+                  <LogoSmall />
                 </Link>
               </BackButtonStyles>
               <TitleStyles style={titleProps}>{title}</TitleStyles>
@@ -138,7 +144,9 @@ const Header = ({ isHomePage, siteTitle, title, publishedAt, count }) => {
           )}
           {isHomePage && (
             <>
-              <BrandingStyles style={fadeUpProps} className="logo" src={logo} alt={siteTitle} />
+              <BrandingStyles style={fadeUpProps}>
+                <LogoLarge />
+              </BrandingStyles>
               <SocialMediaList inHeader />
             </>
           )}

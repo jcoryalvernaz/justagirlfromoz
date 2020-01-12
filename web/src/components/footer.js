@@ -1,6 +1,6 @@
 import React from "react"
 
-import heart from "../images/heart.svg"
+import Heart from "../assets/heart"
 import SocialMediaList from "./social-media-list"
 import FooterStyles from "../styles/FooterStyles"
 
@@ -14,7 +14,7 @@ const Footer = ({ siteTitle }) => {
             © {new Date().getFullYear()}, {siteTitle}
           </div>
           <div className="createdInfo">
-            Made with <img className="heart" src={heart} alt="love" /> in Reno
+            Made with<Heart />in Reno
           </div>
         </div>
       </div>

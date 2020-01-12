@@ -27,10 +27,8 @@ const FooterStyles = styled.footer`
     margin: 1rem;
   }
   .heart {
-    margin-bottom: -0.2rem;
-    margin-left: 0.2rem;
-    margin-right: 0.2rem;
-    height: 1.5rem;
+    margin-bottom: -1.2rem;
+    height: 4rem;
   }
   .gradient {
     grid-column: 1 / -1;

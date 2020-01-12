@@ -21,5 +21,18 @@ module.exports = {
         overlayDrafts: !isProd && token,
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Just a Girl from Oz Photography`,
+        short_name: `Just a Girl from Oz`,
+        description: `Beautiful photography crafted by an Aussie living in America.`,
+        start_url: `/`,
+        background_color: `#1a202c`,
+        theme_color: `#1d2330`,
+        display: `minimal-ui`,
+        icon: `src/images/logo-small.png`, // This path is relative to the root of the site.
+      },
+    },
   ],
 }
