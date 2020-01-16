@@ -9,7 +9,8 @@ export default {
     {
       name: 'name',
       type: 'string',
-      title: 'Name'
+      title: 'Name',
+      validation: Rule => Rule.required().error('Person name is required.')
     },
     {
       name: 'slug',
@@ -19,17 +20,20 @@ export default {
       options: {
         source: 'name',
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required().error('Person slug is required.')
     },
     {
       name: 'image',
       title: 'Image',
-      type: 'figure'
+      type: 'figure',
+      validation: Rule => Rule.required().error('Person image is required.')
     },
     {
       name: 'bio',
       title: 'Bio',
-      type: 'bioPortableText'
+      type: 'bioPortableText',
+      validation: Rule => Rule.required().error('Person bio is required.')
     }
   ],
   preview: {

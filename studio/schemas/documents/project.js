@@ -8,7 +8,8 @@ export default {
     {
       name: "title",
       title: "Title",
-      type: "string"
+      type: "string",
+      validation: Rule => Rule.required().error('Project title is required.')
     },
     {
       name: "slug",
@@ -18,42 +19,49 @@ export default {
       options: {
         source: "title",
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required().error('Project slug is required.')
     },
     {
       name: "publishedAt",
       title: "Published at",
       description: "You can use this field to schedule projects where you show them",
-      type: "datetime"
+      type: "datetime",
+      validation: Rule => Rule.required().error('Project publish date is required.')
     },
     {
       name: "description",
       title: "Description",
       description: "Describe your project for search engines and social media.",
-      type: "text"
+      type: "text",
+      validation: Rule => Rule.required().error('Project title is required.')
     },
     {
       name: "members",
       title: "Members",
       type: "array",
-      of: [{ type: "projectMember" }]
+      of: [{ type: "projectMember" }],
+      validation: Rule => Rule.required().error('Project member(s) are required.')
     },
     {
       name: "mainImage",
       title: "Main image",
-      type: "figure"
+      type: "figure",
+      validation: Rule => Rule.required().error('Project main image is required.')
     },
     {
       name: "photos",
       title: "Photos",
       type: "array",
-      of: [{ type: "figure" }]
+      of: [{ type: "figure" }],
+      validation: Rule => Rule.required().error('Project photos are required.')
     },
     {
       name: "categories",
       title: "Categories",
       type: "array",
-      of: [{ type: "reference", to: { type: "category" } }]
+      of: [{ type: "reference", to: { type: "category" } }],
+      validation: Rule => Rule.required().error('Project categories are required.')
     },
     {
       name: "body",
