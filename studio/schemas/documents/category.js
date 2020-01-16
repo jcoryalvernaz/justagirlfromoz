@@ -6,7 +6,8 @@ export default {
     {
       name: 'title',
       type: 'string',
-      title: 'Title'
+      title: 'Title',
+      validation: Rule => Rule.required().error('Category title is required.')
     },
     {
       name: 'slug',
@@ -16,12 +17,14 @@ export default {
       options: {
         source: 'title',
         maxLength: 96
-      }
+      },
+      validation: Rule => Rule.required().error('Category slug is required.')
     },
     {
       name: 'description',
       type: 'text',
-      title: 'Description'
+      title: 'Description',
+      validation: Rule => Rule.required().error('Category description is required.')
     }
   ],
   preview: {
