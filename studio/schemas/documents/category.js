@@ -29,15 +29,7 @@ export default {
   ],
   preview: {
     select: {
-      title: 'title',
-      slug: 'slug'
+      title: 'title'
     },
-    prepare ({title = 'No title', slug = {}}) {
-      const path = `/${slug.current}`
-      return {
-        title,
-        subtitle: path
-      }
-    }
   }
 }
