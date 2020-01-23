@@ -10,5 +10,8 @@
   --main-navigation-color--inverted: #fff;
   --component-bg: #0d0f13;
   --body-bg: #1d2330;
-  --link-color: #008ce9;
+  --link-color: var(--brand-primary);
+  --selectable-item-color-hover: color(var(--brand-primary) a(40%));
+  --selectable-item-color-focus: color(var(--brand-primary) a(40%));
+  --border-radius-base: 10px;
 }
