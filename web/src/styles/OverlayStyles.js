@@ -19,6 +19,7 @@ const OverlayStyles = styled.div`
   bottom: 0;
   right: 0;
   h2 {
+    margin: 0;
     padding: 1rem;
   }
 `
