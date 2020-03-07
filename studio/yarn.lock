@@ -816,7 +816,7 @@
 
 "@sanity/components@^0.144":
   version "0.144.2"
-  resolved "https://registry.npmjs.org/@sanity/components/-/components-0.144.2.tgz#4a154e20adf976f6e42612893caf50ed7b811762"
+  resolved "https://registry.yarnpkg.com/@sanity/components/-/components-0.144.2.tgz#4a154e20adf976f6e42612893caf50ed7b811762"
   dependencies:
     "@sanity/date-input" "0.144.0"
     "@sanity/imagetool" "0.144.0"
