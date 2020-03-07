@@ -6717,7 +6717,7 @@ prelude-ls@~1.1.2:
 
 prettier-eslint-cli@^5.0.0:
   version "5.0.0"
-  resolved "https://registry.npmjs.org/prettier-eslint-cli/-/prettier-eslint-cli-5.0.0.tgz#3d2334053f87413842c1729ecfb7886377bef89f"
+  resolved "https://registry.yarnpkg.com/prettier-eslint-cli/-/prettier-eslint-cli-5.0.0.tgz#3d2334053f87413842c1729ecfb7886377bef89f"
   dependencies:
     arrify "^2.0.1"
     boolify "^1.0.0"
