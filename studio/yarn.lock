@@ -757,9 +757,9 @@
     in-publish "^2.0.0"
     promise-props-recursive "^1.0.0"
 
-"@sanity/cli@^0.144":
-  version "0.144.0"
-  resolved "https://registry.npmjs.org/@sanity/cli/-/cli-0.144.0.tgz#66271545ee7b204ef4d9f9adb51d256ea17d1eaf"
+"@sanity/cli@^1.149":
+  version "1.149.4"
+  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-1.149.4.tgz#5bf3db53d77d4f23a8de1d3909c3ac8e838ade1a"
 
 "@sanity/client@0.140.36":
   version "0.140.36"
